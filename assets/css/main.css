@@ -653,6 +653,7 @@
   .section-application .img-content {
     flex-direction: column;
     gap: 12px;
+    height: 100%;
   }
   .section-application .img-content > * {
     flex: 1;

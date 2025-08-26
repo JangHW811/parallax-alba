@@ -712,7 +712,7 @@
         scrollTrigger: {
           trigger: '.fade-pin-wrapper',
           start: 'top top',
-          end: '+=' + window.innerHeight * steps, // 이미지 n장이면 n-1 뷰포트 길이
+          end: '+=' + window.innerHeight * steps * 1.6, // 이미지 n장이면 n-1 뷰포트 길이
           scrub: true,
           pin: true,
           anticipatePin: 1,
@@ -760,7 +760,7 @@
         scrollTrigger: {
           trigger: '.section-application',
           start: 'top top',
-          end: '+=' + window.innerHeight * steps, // 이미지 n장이면 n-1 뷰포트 길이
+          end: '+=' + window.innerHeight * steps * 1.6, // 이미지 n장이면 n-1 뷰포트 길이
           scrub: true,
           pin: true,
           anticipatePin: 1,
@@ -785,22 +785,37 @@
           { yPercent: -100, duration: distancePerStep },
           i * distancePerStep
         );
-        tl.to(fonts[i], { autoAlpha: 1, y: -10, duration: 0.35 }, t + 0.05).to(
+        tl.to(fonts[i], { autoAlpha: 1, duration: 0.35 }, t + 0.05).to(
           fonts[i + 1],
-          { autoAlpha: 1, y: 0, duration: 0.45 },
+          { autoAlpha: 1, duration: 0.45 },
           t + 0.2
         );
+      });
+    };
+
+    const handleParallaxNews = () => {
+      const news = document.querySelector('.section-news');
+      const newsTitle = document.querySelector('.section-news .title');
+      const newsLink = document.querySelector('.section-news .news-link');
+      const newsSwiper = document.querySelector('.section-news .swiper');
+
+      gsap.to(newsTitle, {
+        scrollTrigger: {
+          trigger: news,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
       });
     };
     document.addEventListener('DOMContentLoaded', () => {
       gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
       handleParallaxMiddle();
       handleParallaxBottom();
+      handleParallaxNews();
 
       window.addEventListener('resize', () => ScrollTrigger.refresh());
       if (document.querySelector('.main-text')) {
-        gsap.registerPlugin(ScrollTrigger);
-
         gsap.to('.main-text', {
           scrollTrigger: {
             trigger: '.main-visual',
