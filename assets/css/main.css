@@ -51,7 +51,7 @@
   height: 100vh;
   place-items: center;
 }
-.parallax-fade-wrapper {
+.parallax-content-wrapper {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -82,26 +82,13 @@
   height: 100%;
   overflow: hidden;
 }
-.parallax-content {
-  opacity: 0;
-  transform: translateY(80px);
-  max-width: 100%;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  z-index: 2;
-  padding: 128px 60px;
-  color: #fff;
-  transform: translateY(100px);
-  transition: transform 0.5s ease, opacity 0.5s ease;
-}
 
-.parallax-fade-wrapper {
+.parallax-content-wrapper {
   position: relative;
   width: 100%;
   height: 0;
 }
-.parallax-fade {
+.parallax-content {
   position: absolute;
   inset: 0;
   width: 100vw;
@@ -111,39 +98,39 @@
   transform: translateY(0%); /* 위 이미지들은 여기서 0 → -100%로 이동 */
 }
 
-.parallax-fade.main-pc-02 {
+.parallax-content.main-pc-02 {
   background: url('../images/main-pc-02.jpg') center/cover no-repeat;
 }
 
-.parallax-fade.main-pc-03 {
+.parallax-content.main-pc-03 {
   background: url('../images/main-pc-03.jpg') center/cover no-repeat;
 }
 
-.parallax-fade.main-pc-04 {
+.parallax-content.main-pc-04 {
   background: url('../images/main-pc-04.jpg') center/cover no-repeat;
 }
 
-.parallax-fade.main-pc-05 {
+.parallax-content.main-pc-05 {
   background: url('../images/main-pc-05.jpg') center/cover no-repeat;
 }
 
-.parallax-fade.main-pc-06 {
+.parallax-content.main-pc-06 {
   background: url('../images/main-pc-06.jpg') center/cover no-repeat;
 }
 
-.parallax-fade:nth-child(1) {
+.parallax-content:nth-child(1) {
   z-index: 5;
 }
-.parallax-fade:nth-child(2) {
+.parallax-content:nth-child(2) {
   z-index: 4;
 }
-.parallax-fade:nth-child(3) {
+.parallax-content:nth-child(3) {
   z-index: 3;
 }
-.parallax-fade:nth-child(4) {
+.parallax-content:nth-child(4) {
   z-index: 2;
 }
-.parallax-fade:nth-child(5) {
+.parallax-content:nth-child(5) {
   z-index: 1;
 }
 
@@ -157,8 +144,6 @@
   text-align: right;
 }
 .parallax-font .sub-text {
-  right: 60px;
-  bottom: 65px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -170,6 +155,7 @@
   font-size: 22px;
   line-height: 145%;
 }
+
 .high-speed-font {
   mix-blend-mode: difference;
   color: #000;
@@ -196,7 +182,7 @@
     opacity: 0;
     height: 100%;
     width: 100%;
-    padding: 3%;
+    padding: 8% 3% 3% 3%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -249,6 +235,33 @@
 .parallax-font .sub-text .main-btn:focus:after,
 .parallax-font .sub-text .main-btn:active:after {
   right: 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .parallax-font .title h2 {
+    font-size: 40px;
+  }
+  .parallax-font .sub-text p {
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .parallax-font .title h2 {
+    font-size: 28px;
+  }
+  .parallax-font-wrapper {
+    .parallax-font {
+      padding-top: 22%;
+      align-items: flex-start;
+      .sub-text p {
+        font-size: 15px;
+      }
+      .title h2,
+      .sub-text {
+        align-items: flex-start;
+      }
+    }
+  }
 }
 .section-application {
   height: 100vh;
@@ -303,9 +316,21 @@
   height: 500px;
   object-fit: cover;
   overflow: hidden;
+  right: 0;
+  position: relative;
 }
 .section-application .img-content .img-area img {
   object-fit: cover;
+  position: absolute;
+  &:nth-child(1) {
+    z-index: 3;
+  }
+  &:nth-child(2) {
+    z-index: 2;
+  }
+  :nth-child(3) {
+    z-index: 1;
+  }
 }
 .section-news {
   padding: 128px 0;
@@ -553,9 +578,6 @@
     font-size: 32px;
     line-height: 140%;
     padding: 36px 0;
-  }
-  .parallax-content {
-    padding: 36px 16px;
   }
   .parallax-section .title {
     flex-direction: column;

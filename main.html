@@ -234,12 +234,12 @@
     </section>
     <div class="fade-pin-wrapper">
       <span class="high-speed-font">High-speed Interconnect IP Portfolio</span>
-      <div class="parallax-fade-wrapper">
-        <section class="parallax-fade main-pc-02"></section>
-        <section class="parallax-fade main-pc-03"></section>
-        <section class="parallax-fade main-pc-04"></section>
-        <section class="parallax-fade main-pc-05"></section>
-        <section class="parallax-fade main-pc-06"></section>
+      <div class="parallax-content-wrapper">
+        <section class="parallax-content main-pc-02"></section>
+        <section class="parallax-content main-pc-03"></section>
+        <section class="parallax-content main-pc-04"></section>
+        <section class="parallax-content main-pc-05"></section>
+        <section class="parallax-content main-pc-06"></section>
       </div>
       <div class="parallax-font-wrapper">
         <section class="parallax-font">
@@ -343,6 +343,8 @@
           </ul>
           <div class="img-area">
             <img src="assets/images/main-pc-07.png" alt="" />
+            <img src="assets/images/main-pc-08.png" alt="" />
+            <img src="assets/images/main-pc-09.png" alt="" />
           </div>
         </div>
       </div>
@@ -695,11 +697,8 @@
 
   <script src="assets/js/script.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
-      const container = document.getElementById('fade-pin-wrapper');
-      const panels = gsap.utils.toArray('.parallax-fade');
+    const handleParallaxMiddle = () => {
+      const panels = gsap.utils.toArray('.parallax-content');
       const fonts = gsap.utils.toArray('.parallax-font');
       const seg = 1; // 타임라인상의 구간 길이(정규화)
       gsap.set(fonts.slice(1), { autoAlpha: 0 });
@@ -744,21 +743,61 @@
           t + 0.2
         );
       });
+    };
 
-      // 리사이즈 대응
+    const handleParallaxBottom = () => {
+      const panels = gsap.utils.toArray('.img-area img');
+      const fonts = gsap.utils.toArray('.img-links li');
+      const seg = 1; // 타임라인상의 구간 길이(정규화)
+      gsap.set(fonts.slice(1), { autoAlpha: 0 });
+
+      const steps = panels.length - 1; // 전환 횟수
+      const distancePerStep = 1; // 타임라인 상 각 단계 길이(정규화)
+
+      // 타임라인: pin 된 상태에서 스크롤에 따라 "윗 이미지"가 한 장씩 위로 빠짐
+      const tl = gsap.timeline({
+        defaults: { ease: 'none' },
+        scrollTrigger: {
+          trigger: '.section-application',
+          start: 'top top',
+          end: '+=' + window.innerHeight * steps, // 이미지 n장이면 n-1 뷰포트 길이
+          scrub: true,
+          pin: true,
+          anticipatePin: 1,
+          snap: {
+            // 단계(슬라이드) 경계로 스냅
+            snapTo: (value) => {
+              return Math.round(value * steps) / steps;
+            },
+            duration: 0.4,
+            ease: 'power1.inOut',
+          },
+        },
+      });
+
+      // 각 단계: i번째(위) 이미지를 0 → -100%로 밀어 올려 아래 이미지를 드러냄
+      panels.forEach((img, i) => {
+        if (i === panels.length - 1) return; // 마지막(맨 아래)은 안 움직임
+        const t = i * seg;
+
+        tl.to(
+          img,
+          { yPercent: -100, duration: distancePerStep },
+          i * distancePerStep
+        );
+        tl.to(fonts[i], { autoAlpha: 1, y: -10, duration: 0.35 }, t + 0.05).to(
+          fonts[i + 1],
+          { autoAlpha: 1, y: 0, duration: 0.45 },
+          t + 0.2
+        );
+      });
+    };
+    document.addEventListener('DOMContentLoaded', () => {
+      gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+      handleParallaxMiddle();
+      handleParallaxBottom();
+
       window.addEventListener('resize', () => ScrollTrigger.refresh());
-      // function snapTo(idx) {
-      //   isSnapping = true;
-      //   gsap.to(window, {
-      //     scrollTo: { y: panels[idx], autoKill: false },
-      //     duration: 1,
-      //     ease: 'sine.inOut',
-      //     onComplete() {
-      //       currentIndex = idx;
-      //       isSnapping = false;
-      //     },
-      //   });
-      // }
       if (document.querySelector('.main-text')) {
         gsap.registerPlugin(ScrollTrigger);
 
@@ -773,28 +812,6 @@
           ease: 'none',
         });
       }
-      // window.addEventListener(
-      //   'wheel',
-      //   (e) => {
-      //     if (!snapEnabled || isSnapping) return;
-      //     if (e.deltaY < 0 && currentIndex === 0) {
-      //       snapEnabled = false;
-      //       document.body.style.overflowY = 'auto';
-      //       return;
-      //     }
-      //     if (e.deltaY > 0 && currentIndex === panels.length - 1) {
-      //       snapEnabled = false;
-      //       document.body.style.overflowY = 'auto';
-      //       return;
-      //     }
-      //     e.preventDefault();
-      //     if (e.deltaY > 0) snapTo(currentIndex + 1);
-      //     else snapTo(currentIndex - 1);
-      //   },
-      //   { passive: false }
-      // );
-
-      // ScrollTrigger.refresh();
 
       const newsSwiper = new Swiper('.news-swiper', {
         slidesPerView: 4,
