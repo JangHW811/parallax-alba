@@ -1833,16 +1833,16 @@
 }
 .company-main {
   margin: 128px 0 0;
+  position: relative;
 }
 .section-company {
   padding: 128px 0 0;
-  position: relative;
 }
 .section-company.ip-delivers {
   margin-top: 24px;
 }
 
-.section-company .section-subtitle {
+.section-subtitle {
   position: sticky;
   top: 128px;
   left: 60px;
@@ -1850,7 +1850,9 @@
   font-weight: 500;
   line-height: 140%;
   color: #000;
+  background-color: #fff;
   z-index: 10;
+  padding: 16px 0;
 }
 .section-company .section-lead {
   font-size: 32px;

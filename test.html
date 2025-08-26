@@ -2,194 +2,111 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
-    <title>Pin BG + Word-by-Word Color Switch</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-    <!-- 데모용 폰트 -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-
+    <title>Sticky Stacking Rows</title>
     <style>
       :root {
-        --start-color: #ffffff; /* 시작 텍스트 색 */
-        --end-color: #111111; /* 최종 텍스트 색 */
+        --row-h: 56px; /* 각 줄 높이 */
+        --stack-gap: 1px; /* 스택된 줄 사이 경계선 간격 */
+        --space: 60vh; /* 줄 사이 초반 간격(스크롤 거리) */
+        --pad-x: 6vw;
+        --bg: #0a0c11;
+        --fg: #e6ebff;
+        --sep: rgba(255, 255, 255, 0.08);
       }
       * {
         box-sizing: border-box;
         margin: 0;
       }
       body {
-        font-family: 'Noto Sans KR', system-ui, -apple-system, Segoe UI, Roboto,
-          sans-serif;
-        background: #e9e6dc;
-        color: #111;
+        background: var(--bg);
+        color: var(--fg);
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans,
+          Arial, sans-serif;
       }
+
       .spacer {
-        height: 80vh;
+        height: 60vh;
         display: grid;
         place-items: center;
+        color: #8ea0c8;
       }
 
-      /* ===== 고정될 히어로 ===== */
-      .hero {
+      /* ===== 스택 리스트 컨테이너 ===== */
+      .stacked {
         position: relative;
-        height: 100vh;
-        overflow: clip;
-        display: grid;
-        place-items: center;
-        isolation: isolate;
+        padding-block: 2vh 40vh; /* 위/아래 여유 */
       }
-      .hero__bg {
-        position: absolute;
-        inset: 0;
-        background: url('https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=1920&auto=format&fit=crop')
-          center/cover no-repeat;
-        transform: scale(1);
-        will-change: transform;
-        z-index: -1;
+      .stacked::after {
+        /* 마지막까지 전부 쌓인 상태를 충분히 보여주기 위한 바닥 여유 */
+        content: '';
+        display: block;
+        height: 50vh;
       }
-      .hero__content {
-        width: min(90vw, 1100px);
-        padding: clamp(16px, 4vh, 32px);
-        color: var(--start-color);
-        text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
-      }
-      .hero__title {
-        font-size: clamp(28px, 6vw, 64px);
-        line-height: 1.06;
-        margin-bottom: clamp(14px, 2vh, 22px);
-        color: var(--start-color);
-      }
-      .lines {
-        display: grid;
-        gap: clamp(8px, 1.2vh, 14px);
-      }
-      .line {
-        font-size: clamp(16px, 2.2vw, 22px);
-        line-height: 1.6;
-      }
-      .word {
-        color: var(--start-color);
-      } /* 시작은 전부 시작색 */
 
-      /* ===== 다음 섹션 ===== */
-      .next {
-        background: #f7f4ea;
-        color: #1b1b1b;
-        padding: clamp(28px, 6vw, 64px) 6vw;
-        min-height: 140vh;
+      /* ===== 각 줄 ===== */
+      .row {
+        position: sticky;
+        top: calc(var(--i) * (var(--row-h) + var(--stack-gap)));
+        height: var(--row-h);
+        display: flex;
+        align-items: center;
+        padding: 0 var(--pad-x);
+        background: var(--bg); /* 누적될 때 뒤를 가리도록 배경 유지 */
+        border-bottom: 1px solid var(--sep);
+        z-index: calc(100 - var(--i)); /* 위에 있는 줄이 항상 위로 */
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: clamp(12px, 1.8vw, 14px);
+        /* 초기 간격(스크롤 거리) */
+        margin-top: var(--space);
       }
-      .next h2 {
-        font-size: clamp(24px, 5vw, 48px);
-        margin: 0 0 12px;
+      .row:first-child {
+        margin-top: 0;
+      } /* 첫 줄은 위 간격 없음 */
+
+      /* 보기 좋게 카드 그리드 (옵션) */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(220px, 1fr));
+        gap: 20px;
+        padding: 3vh var(--pad-x) 6vh;
       }
-      .next p {
-        max-width: 72ch;
-        line-height: 1.7;
-        opacity: 0.9;
+      .card {
+        aspect-ratio: 4/3;
+        border-radius: 10px;
+        overflow: hidden;
+        background: linear-gradient(120deg, #0e1320, #1c2a5a);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
       }
     </style>
   </head>
   <body>
     <div class="spacer"><h2>위쪽 컨텐츠</h2></div>
 
-    <section class="hero" id="hero">
-      <div class="hero__bg" id="heroBG"></div>
+    <!-- 스크롤할수록 위로 차곡차곡 쌓이는 줄들 -->
+    <section class="stacked">
+      <div class="row" style="--i: 0">DRIVING CHANGE</div>
+      <div class="row" style="--i: 1">ELEVATING SPACES</div>
+      <div class="row" style="--i: 2">NAVIGATING MARKET FRONTIERS</div>
+      <div class="row" style="--i: 3">BEYOND BOUNDARIES</div>
+      <div class="row" style="--i: 4">ADAPTIVE LIVING</div>
 
-      <div class="hero__content">
-        <h1 class="hero__title">Adaptive Living Spaces</h1>
-
-        <!-- 원하는 문장들 -->
-        <div class="lines" id="lines">
-          <p class="line">
-            실내·실외 데이터를 결합해 시간대와 활동에 맞는 환경을 만듭니다.
-          </p>
-          <p class="line">온도, 습도, 조도, 공기 흐름을 정밀하게 제어합니다.</p>
-          <p class="line">
-            사용자 패턴을 학습하여 다음 행동을 미리 준비합니다.
-          </p>
-          <p class="line">더 적은 에너지로 더 높은 쾌적함을 제공합니다.</p>
-          <p class="line">
-            공간의 역할이 바뀌어도 시스템은 자연스럽게 적응합니다.
-          </p>
-        </div>
+      <!-- 예시: 아래쪽에 카드 그리드 등 본문 컨텐츠 -->
+      <div class="grid">
+        <div class="card"></div>
+        <div
+          class="card"
+          style="background: linear-gradient(120deg, #203068, #4a66cc)"
+        ></div>
+        <div
+          class="card"
+          style="background: linear-gradient(120deg, #8291ef, #6f83e0)"
+        ></div>
       </div>
     </section>
 
-    <section class="next">
-      <h2>다음 섹션 시작</h2>
-      <p>
-        위 히어로 영역은 스크롤 중 화면에 고정되고, 스크롤 진행에 따라 텍스트가
-        **단어 단위로 즉시(end-color로) 색이 전환**됩니다. 모든 단어가 바뀌면
-        pin이 해제되어 이 영역으로 넘어옵니다.
-      </p>
-      <div style="height: 100vh"></div>
-    </section>
-
-    <script>
-      gsap.registerPlugin(ScrollTrigger);
-
-      // ===== 단어 단위로 span 래핑 =====
-      function wrapWords(el) {
-        // 공백 토큰을 보존하면서 단어만 span으로 감싸기
-        const tokens = el.textContent.split(/(\s+)/); // 공백 캡쳐
-        el.innerHTML = tokens
-          .map((tok) => {
-            if (/^\s+$/.test(tok)) return tok; // 공백은 그대로
-            return `<span class="word">${tok}</span>`; // 단어만 래핑
-          })
-          .join('');
-      }
-
-      document.querySelectorAll('.line').forEach(wrapWords);
-
-      const words = Array.from(document.querySelectorAll('.word'));
-      const totalWords = words.length;
-
-      // ===== ScrollTrigger: hero 고정 + 단어별 즉시 색 전환 =====
-      const SPEED = 1.0; // ↑ 키우면 더 긴 스크롤 필요
-      const SCRUB = 1.0; // 관성 (원하면 1.2~1.6)
-      const END_COL = getComputedStyle(document.documentElement)
-        .getPropertyValue('--end-color')
-        .trim();
-
-      // 타임라인 생성 (총 길이를 단어 수로 설정)
-      const tl = gsap.timeline({
-        defaults: { ease: 'none' },
-        scrollTrigger: {
-          trigger: '.hero',
-          start: 'top top',
-          end: () => '+=' + window.innerHeight * totalWords * 0.35 * SPEED,
-          scrub: SCRUB,
-          pin: true,
-          anticipatePin: 1,
-          // snap 안 씀: 바로 바뀌는 느낌 유지 (원하면 snap 추가 가능)
-        },
-      });
-
-      // 타임라인의 총 길이를 'totalWords'로 만들기 위한 더미 구간
-      tl.to({}, { duration: totalWords }, 0);
-
-      // 각 단어: 해당 시점에 '즉시' end-color로 전환 (duration: 0)
-      words.forEach((w, i) => {
-        tl.to(w, { color: END_COL, duration: 0 }, i); // i초 지점에서 바로 체인지
-      });
-
-      // (선택) 배경 살짝 줌인/줌아웃으로 생동감
-      tl.fromTo(
-        '#heroBG',
-        { scale: 1 },
-        { scale: 1.06, duration: totalWords },
-        0
-      );
-
-      // 리사이즈 대응
-      addEventListener('resize', () => ScrollTrigger.refresh());
-    </script>
+    <div class="spacer"><h2>아래쪽 컨텐츠</h2></div>
   </body>
 </html>
