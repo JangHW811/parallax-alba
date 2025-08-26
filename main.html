@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>퀄리타스반도체</title>
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+  </head>
+  <body>
+    <header class="gnb">
+      <div class="container">
+        <h1 class="logo">
+          <a href="/index.html" aria-label="퀄리타스반도체 로고">
+            <span class="blind">퀄리타스반도체</span>
+          </a>
+        </h1>
+        <button class="menu-toggle" aria-label="메뉴 열기">
+          <i class="bi bi-list"></i>
+        </button>
+        <ul class="nav">
+          <li class="nav-item has-sub">
+            <a href="pages/solution/index.html">Solution</a>
+            <div class="nav-hover-area">
+              <div class="mega-menu">
+                <div class="container">
+                  <div class="mega-col">
+                    <h4>Application</h4>
+                    <ul>
+                      <li><a href="#">Overview</a></li>
+                      <li><a href="#">AI / HPC</a></li>
+                      <li><a href="#">Mobile & Edge</a></li>
+                      <li><a href="#">Automotive</a></li>
+                    </ul>
+                  </div>
+                  <div class="mega-col">
+                    <h4>High-speed Interconnect IP Portfolio</h4>
+                    <ul>
+                      <li><a href="#">Overview</a></li>
+                      <li><a href="#">PCI Express</a></li>
+                      <li><a href="#">UCI Express</a></li>
+                      <li><a href="#">MIPI Solution</a></li>
+                      <li><a href="#">Display Solution</a></li>
+                      <li><a href="#">SERDES</a></li>
+                      <li><a href="#">USB</a></li>
+                      <li><a href="#">Ethernet</a></li>
+                      <li><a href="#">SLVS-EC</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item has-sub">
+            <a href="pages/support/index.html">Support</a>
+            <div class="nav-hover-area">
+              <div class="mega-menu">
+                <div class="container">
+                  <div class="mega-col">
+                    <a href="#">Q-CARES</a>
+                  </div>
+                  <div class="mega-col">
+                    <h4>Download Center</h4>
+                    <ul>
+                      <li><a href="#">White paper</a></li>
+                      <li><a href="#">Brochure</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item has-sub">
+            <a href="pages/company/index.html">Company</a>
+            <div class="nav-hover-area">
+              <div class="mega-menu">
+                <div class="container">
+                  <div class="mega-col">
+                    <a href="#">About Us</a>
+                  </div>
+                  <div class="mega-col">
+                    <h4>IR</h4>
+                    <ul>
+                      <li><a href="#">전자공고</a></li>
+                      <li><a href="#">공시</a></li>
+                      <li><a href="#">공시정보자료규정</a></li>
+                    </ul>
+                  </div>
+                  <div class="mega-col">
+                    <a href="#">Career</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item has-sub">
+            <a href="pages/news-event/index.html">News & Event</a>
+            <div class="nav-hover-area">
+              <div class="mega-menu">
+                <div class="container">
+                  <div class="mega-col">
+                    <a href="#">News</a>
+                  </div>
+                  <div class="mega-col">
+                    <a href="#">Event</a>
+                  </div>
+                  <div class="mega-col">
+                    <a href="#">Insight</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <ul class="unit">
+          <li><a href="pages/contact/index.html">Contact us</a></li>
+          <li class="lang-item">
+            <a href="#none" class="lang-toggle"><i class="bi bi-globe"></i></a>
+            <ul class="lang-dropdown">
+              <li><a href="#none" class="active">KR</a></li>
+              <li><a href="#none">EN</a></li>
+              <li><a href="#none">JP</a></li>
+              <li><a href="#none">CN</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="m-submenu">
+          <ul class="m-nav">
+            <li class="nav-item has-sub">
+              <h4 class="title">Solution</h4>
+              <div class="accordion-toggle">Application</div>
+              <div class="submenu">
+                <ul>
+                  <li><a href="#">Overview</a></li>
+                  <li><a href="#">AI / HPC</a></li>
+                  <li><a href="#">Mobile & Edge</a></li>
+                  <li><a href="#">Automotive</a></li>
+                </ul>
+              </div>
+
+              <div class="accordion-toggle">
+                High-speed Interconnect IP Portfolio
+              </div>
+              <div class="submenu">
+                <ul>
+                  <li><a href="#">Overview</a></li>
+                  <li><a href="#">PCI Express</a></li>
+                  <li><a href="#">UCI Express</a></li>
+                  <li><a href="#">MIPI Solution</a></li>
+                  <li><a href="#">Display Solution</a></li>
+                  <li><a href="#">SERDES</a></li>
+                  <li><a href="#">USB</a></li>
+                  <li><a href="#">Ethernet</a></li>
+                  <li><a href="#">SLVS-EC</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item has-sub">
+              <h4 class="title">Support</h4>
+              <a href="#none">Q-CARES</a>
+              <div class="accordion-toggle">Download Center</div>
+              <div class="submenu">
+                <ul>
+                  <li><a href="#">White paper</a></li>
+                  <li><a href="#">Brochure</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item has-sub">
+              <h4 class="title">Company</h4>
+              <a href="#none">About Us</a>
+              <div class="accordion-toggle">IR</div>
+              <div class="submenu">
+                <ul>
+                  <li><a href="#">전자공고</a></li>
+                  <li><a href="#">공시</a></li>
+                  <li><a href="#">공시정보자료규정</a></li>
+                </ul>
+              </div>
+              <a href="#none">Career</a>
+            </li>
+            <li class="nav-item has-sub">
+              <h4 class="title">News & Event</h4>
+              <a href="#none">News Us</a>
+              <a href="#none">Event</a>
+              <a href="#none">Insight</a>
+            </li>
+            <li class="mega-bottom">
+              <ul>
+                <li>
+                  <a href="#none">KR</a>
+                </li>
+                <li>
+                  <a href="#none" class="active">EN</a>
+                </li>
+                <li>
+                  <a href="#none">JP</a>
+                </li>
+                <li>
+                  <a href="#none">CN</a>
+                </li>
+              </ul>
+              <a href="#none">Contact us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-visual">
+      <div class="main-text-wrapper">
+        <div class="main-text">
+          Qualitas semiconductor develops<br />
+          High-speed Interconnect IP Solution
+        </div>
+      </div>
+    </div>
+
+    <section class="section-innovation">
+      <div class="container">
+        <div class="inner-text reveal-on-scroll" data-delay="200">
+          Empowering<br />innovation<br />with advanced<br />node technology
+        </div>
+      </div>
+    </section>
+    <div id="scroll-container" data-scroll-container>
+      <!-- bg-01 -->
+      <section class="parallax-section" data-scroll-section>
+        <div class="parallax-inner">
+          <picture class="parallax-img">
+            <source
+              media="(max-width: 767px)"
+              srcset="assets/images/main-mb-02.jpg"
+            />
+            <source
+              media="(max-width: 1023px)"
+              srcset="assets/images/main-tb-02.jpg"
+            />
+            <img src="assets/images/main-pc-02.jpg" alt="" />
+          </picture>
+
+          <div class="parallax-content reveal-on-scroll" data-delay="100">
+            <div class="title">
+              <span>High-speed Interconnect IP Portfolio</span>
+              <h2>100G/50G/20G<br />Serdes PHY IP</h2>
+            </div>
+            <div class="sub-text">
+              <p>
+                Cutting-edge SERDES PHY solutions<br />with unparalleled Power,
+                Performance,<br />and Area efficiency
+              </p>
+              <button type="button" class="main-btn">
+                <span class="text">Learn more</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- bg-02 -->
+      <section class="parallax-section" data-scroll-section>
+        <div class="parallax-inner">
+          <picture class="parallax-img">
+            <source
+              media="(max-width: 767px)"
+              srcset="assets/images/main-mb-03.jpg"
+            />
+            <source
+              media="(max-width: 1023px)"
+              srcset="assets/images/main-tb-03.jpg"
+            />
+            <img src="assets/images/main-pc-03.jpg" alt="" />
+          </picture>
+          <div class="parallax-content reveal-on-scroll" data-delay="100">
+            <div class="title">
+              <span>High-speed Interconnect IP Portfolio</span>
+              <h2>PCI Express PHY IP<br />Gen 4 to Gen 6</h2>
+            </div>
+            <div class="sub-text">
+              <p>
+                Delivering up to 64 GT/s per lane with<br />ultra-low latency,
+                power efficiency,<br />and robust equalization
+              </p>
+              <button type="button" class="main-btn">
+                <span class="text">Learn more</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- bg-03 -->
+      <section class="parallax-section" data-scroll-section>
+        <div class="parallax-inner">
+          <picture class="parallax-img">
+            <source
+              media="(max-width: 767px)"
+              srcset="assets/images/main-mb-04.jpg"
+            />
+            <source
+              media="(max-width: 1023px)"
+              srcset="assets/images/main-tb-04.jpg"
+            />
+            <img src="assets/images/main-pc-04.jpg" alt="" />
+          </picture>
+          <div class="parallax-content reveal-on-scroll" data-delay="100">
+            <div class="title">
+              <span>High-speed Interconnect IP Portfolio</span>
+              <h2>PCI Express PHY IP<br />Gen 4 to Gen 6</h2>
+            </div>
+            <div class="sub-text">
+              <p>Enabling high-performance<br />chiplet integration</p>
+              <button type="button" class="main-btn">
+                <span class="text">Learn more</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="parallax-section" data-scroll-section>
+        <div class="parallax-inner">
+          <picture class="parallax-img">
+            <source
+              media="(max-width: 767px)"
+              srcset="assets/images/main-mb-05.jpg"
+            />
+            <source
+              media="(max-width: 1023px)"
+              srcset="assets/images/main-tb-05.jpg"
+            />
+            <img src="assets/images/main-pc-05.jpg" alt="" />
+          </picture>
+          <div class="parallax-content reveal-on-scroll" data-delay="100">
+            <div class="title">
+              <span>High-speed Interconnect IP Portfolio</span>
+              <h2>Camera and Display<br />interface IP Suite</h2>
+            </div>
+            <div class="sub-text">
+              <p>
+                Proven MIPI C/D-PHY and Display IP<br />
+                for seamless, low-power connectivity in various application
+              </p>
+              <button type="button" class="main-btn">
+                <span class="text">Learn more</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="parallax-section" data-scroll-section>
+        <div class="parallax-inner">
+          <picture class="parallax-img">
+            <source
+              media="(max-width: 767px)"
+              srcset="assets/images/main-mb-06.jpg"
+            />
+            <source
+              media="(max-width: 1023px)"
+              srcset="assets/images/main-tb-06.jpg"
+            />
+            <img src="assets/images/main-pc-06.jpg" alt="" />
+          </picture>
+          <div class="parallax-content reveal-on-scroll" data-delay="100">
+            <div class="title">
+              <span>High-speed Interconnect IP Portfolio</span>
+              <h2>USB and Ethernet PHY IP</h2>
+            </div>
+            <div class="sub-text">
+              <p>
+                Exceptional speed, reliability,<br />and seamless connectivity
+              </p>
+              <button type="button" class="main-btn">
+                <span class="text">Learn more</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="parallax-section section-application" data-scroll-section>
+        <div class="container">
+          <div class="title">
+            <h2>Application</h2>
+            <p>
+              Our interconnect IP powers systems across<br />
+              AI, HPC, Data Centers, Automotive, and Embedded<br />
+              AI Devices. Its flexible design adapts seamlessly to<br />
+              a wide range of architectures and performance needs.Trusted<br />
+              by industry leaders and proven through years of real-world silicon
+              experience.
+            </p>
+          </div>
+          <div class="img-content">
+            <ul class="img-links">
+              <li>
+                <a href="#none">AI/HPC(Data center)</a>
+              </li>
+              <li>
+                <a href="#none">Mobile & IT Edge AI</a>
+              </li>
+              <li>
+                <a href="#none">Automotive</a>
+              </li>
+            </ul>
+            <div class="img-area">
+              <img src="assets/images/main-pc-07.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="parallax-section section-news" data-scroll-section>
+        <div class="container">
+          <div class="section-header">
+            <h2 class="title">News & Event</h2>
+            <div class="news-link">
+              <a href="#" class="view-all">View all</a>
+              <div class="swiper-navigation">
+                <button
+                  type="button"
+                  class="swiper-nav swiper-button-prev"
+                ></button>
+                <button
+                  type="button"
+                  class="swiper-nav swiper-button-next"
+                ></button>
+              </div>
+            </div>
+          </div>
+          <div class="swiper news-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide news-card">
+                <div class="card-header">
+                  <span class="logo"
+                    ><img src="/assets/images/ex/ex-01.png" alt="logo"
+                  /></span>
+                  <div class="title">
+                    <p class="">Qualitas semiconductor</p>
+                    <time datetime="2025-03-31">March 31 2025</time>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="image">
+                    <img
+                      class="no-image"
+                      src="/assets/images/ex/ex-01.png"
+                      alt="ex"
+                    />
+                  </div>
+                  <p>
+                    🚀 Qualitas Semiconductor Successfully Develops UCIe
+                    v2.0-Compliant PHY IP! We’re excited to share that our
+                    latest UCIe PHY IP — a key IP for Chiplet interface
+                    implementation — is fully compliant with the UCIe 2.0
+                    specification. Supporting up to 512Gbps (56GB/s) data
+                    transfer over 32 lanes with just a 1mm trace width, it
+                    delivers high bandwidth and low latency — ideal for AI
+                    accelerators, data center SoCs, and high-density Chiplet
+                    architectures. 👉 Read the full announcement here: 🔗
+                    https://lnkd.in/gHESmC_m
+                  </p>
+                  <a href="#" class="read-more">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="swiper-slide news-card">
+                <div class="card-header">
+                  <span class="logo"
+                    ><img src="/assets/images/ex/ex-01.png" alt="logo"
+                  /></span>
+                  <div class="title">
+                    <p class="">Qualitas semiconductor</p>
+                    <time datetime="2025-03-31">March 31 2025</time>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="image">
+                    <img
+                      class="no-image"
+                      src="/assets/images/ex/ex-01.png"
+                      alt="ex"
+                    />
+                  </div>
+                  <p>
+                    🚀 Qualitas Semiconductor Successfully Develops UCIe
+                    v2.0-Compliant PHY IP!We’re excited to share that our latest
+                    UCIe PHY IP — a key IP for Chiplet interface implementation
+                    — is fully compliant with the UCIe 2.0 specification.
+                    Supporting up to 512Gbps (56GB/s) data transfer over 32
+                    lanes with just a 1mm trace width, it delivers high
+                    bandwidth and low latency — ideal for AI accelerators, data
+                    center SoCs, and high-density Chiplet architectures.
+                  </p>
+                  <a href="#" class="read-more">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="swiper-slide news-card">
+                <div class="card-header">
+                  <span class="logo"
+                    ><img src="/assets/images/ex/ex-01.png" alt="logo"
+                  /></span>
+                  <div class="title">
+                    <p class="">Qualitas semiconductor</p>
+                    <time datetime="2025-03-31">March 31 2025</time>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="image">
+                    <img
+                      class="no-image"
+                      src="/assets/images/ex/ex-01.png"
+                      alt="ex"
+                    />
+                  </div>
+                  <p>
+                    🚀 Qualitas Semiconductor Successfully Develops UCIe
+                    v2.0-Compliant PHY IP! We’re excited to share that our
+                    latest UCIe PHY IP — a key IP for Chiplet interface
+                    implementation — is fully compliant with the UCIe 2.0
+                    specification. Supporting up to 512Gbps (56GB/s) data
+                    transfer over 32 lanes with just a 1mm trace width, it
+                    delivers high bandwidth and low latency — ideal for AI
+                    accelerators, data center SoCs, and high-density Chiplet
+                    architectures. 👉 Read the full announcement here: 🔗
+                    https://lnkd.in/gHESmC_m
+                  </p>
+                  <a href="#" class="read-more">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="swiper-slide news-card">
+                <div class="card-header">
+                  <span class="logo"
+                    ><img src="/assets/images/ex/ex-01.png" alt="logo"
+                  /></span>
+                  <div class="title">
+                    <p class="">Qualitas semiconductor</p>
+                    <time datetime="2025-03-31">March 31 2025</time>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="image">
+                    <img
+                      class="no-image"
+                      src="/assets/images/ex/ex-01.png"
+                      alt="ex"
+                    />
+                  </div>
+                  <p>
+                    🚀 Qualitas Semiconductor Successfully Develops UCIe
+                    v2.0-Compliant PHY IP! We’re excited to share that our
+                    latest UCIe PHY IP — a key IP for Chiplet interface
+                    implementation — is fully compliant with the UCIe 2.0
+                    specification. Supporting up to 512Gbps (56GB/s) data
+                    transfer over 32 lanes with just a 1mm trace width, it
+                    delivers high bandwidth and low latency — ideal for AI
+                    accelerators, data center SoCs, and high-density Chiplet
+                    architectures. 👉 Read the full announcement here: 🔗
+                    https://lnkd.in/gHESmC_m
+                  </p>
+                  <a href="#" class="read-more">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="swiper-slide news-card">
+                <div class="card-header">
+                  <span class="logo"
+                    ><img src="/assets/images/ex/ex-01.png" alt="logo"
+                  /></span>
+                  <div class="title">
+                    <p class="">Qualitas semiconductor</p>
+                    <time datetime="2025-03-31">March 31 2025</time>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="image">
+                    <img src="/assets/images/ex/ex-01.png" alt="ex" />
+                  </div>
+                  <p>
+                    🚀 Qualitas Semiconductor Successfully Develops UCIe
+                    v2.0-Compliant PHY IP! We’re excited to share that our
+                    latest UCIe PHY IP — a key IP for Chiplet interface
+                    implementation — is fully compliant with the UCIe 2.0
+                    specification. Supporting up to 512Gbps (56GB/s) data
+                    transfer over 32 lanes with just a 1mm trace width, it
+                    delivers high bandwidth and low latency — ideal for AI
+                    accelerators, data center SoCs, and high-density Chiplet
+                    architectures. 👉 Read the full announcement here: 🔗
+                    https://lnkd.in/gHESmC_m
+                  </p>
+                  <a href="#" class="read-more">
+                    <i class="bi bi-box-arrow-up-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top-content">
+          <div class="footer-nav">
+            <div class="footer-nav-item">
+              <h4 class="footer-nav-title">Solution</h4>
+              <ul class="footer-nav-list">
+                <li>
+                  <a href="#none">Application</a>
+                </li>
+                <li>
+                  <a href="#none">High-speed Interconnect IP Portfolio</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-nav-item">
+              <h4 class="footer-nav-title">Support</h4>
+              <ul class="footer-nav-list">
+                <li>
+                  <a href="#none">Q-Cares</a>
+                </li>
+                <li>
+                  <a href="#none">Download center</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-nav-item">
+              <h4 class="footer-nav-title">Company</h4>
+              <ul class="footer-nav-list">
+                <li>
+                  <a href="#none">About us</a>
+                </li>
+                <li>
+                  <a href="#none">IR</a>
+                </li>
+                <li>
+                  <a href="#none">Carrer</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-nav-item">
+              <h4 class="footer-nav-title">News & Event</h4>
+              <ul class="footer-nav-list">
+                <li>
+                  <a href="#none">News</a>
+                </li>
+                <li>
+                  <a href="#none">Event</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="footer-info">
+            <h4 class="footer-nav-title">Office</h4>
+            <p>
+              <span>Head Office</span>
+              <span
+                >#609, 8, Seongnam-daero 331 beon-gil, Bundang-gu,<br />
+                Seongnam-si, Gyeonggi-do</span
+              >
+            </p>
+            <p>
+              <span>R&D Center</span>
+              <span
+                >16F/23F, 8, Seongnam-daero 331 beon-gil, Bundang-gu,<br />Seongnam-si,
+                Gyeonggi-do</span
+              >
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom-content">
+          <div class="footer-bottom-title">
+            <h4>Qualitas semiconductor Co., Ltd.</h4>
+            <div>
+              <a href="#none">Private Policy</a>
+              <a href="#none">Terms of Use</a>
+            </div>
+          </div>
+          <p class="footer-copy">
+            Copyright © Qualitas Semiconductor Co., Ltd. All rights reserved
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 메인 롤링 팝업 영역 -->
+    <div class="rolling-popup" id="rollingPopup">
+      <div class="popup-inner">
+        <div class="swiper-container popup-swiper">
+          <div class="swiper-wrapper">
+            <div
+              class="swiper-slide"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  #214971 0%,
+                  #3e8bd7 50%,
+                  #ffffff 100%
+                );
+              "
+            >
+              <h3>
+                Qualitas semiconductor<br />develops High-speed<br />Interconnect
+                IP Solution
+              </h3>
+              <p>Learn ipsum dolor sit amet consectetur adipiscing elit.</p>
+            </div>
+            <div
+              class="swiper-slide"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  #214971 0%,
+                  #3e8bd7 50%,
+                  #ffffff 100%
+                );
+              "
+            >
+              <h3>
+                Qualitas semiconductor<br />develops High-speed<br />Interconnect
+                IP Solution
+              </h3>
+              <p>Learn ipsum dolor sit amet consectetur adipiscing elit.</p>
+            </div>
+          </div>
+          <div class="swiper-pagination popup-pagination"></div>
+        </div>
+
+        <div class="popup-footer">
+          <label>
+            <input type="checkbox" id="noShowToday" />
+            Do not show this again today
+          </label>
+          <button class="btn-close" id="popupClose">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 메인 쿠키 배너 영역 -->
+    <div class="cookie-banner" id="cookieBanner">
+      <p>
+        This website uses cookies to enhance user experience and to analyze
+        performance and traffic on our website.
+      </p>
+      <div class="cookie-buttons">
+        <button type="button" id="decline">DECLINE</button>
+        <button type="button" id="accept">ACCEPT</button>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <script src="assets/js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+      const container = document.getElementById('scroll-container');
+      const panels = gsap.utils.toArray('.parallax-section');
+      let currentIndex = 0;
+      let snapEnabled = false;
+      let isSnapping = false;
+
+      ScrollTrigger.create({
+        trigger: container,
+        start: 'top top',
+        end: 'bottom bottom',
+        onEnter: () => {
+          snapEnabled = true;
+          document.body.style.overflowY = 'hidden';
+        },
+        onEnterBack: () => {
+          snapEnabled = true;
+          document.body.style.overflowY = 'hidden';
+        },
+        onLeave: () => {
+          snapEnabled = false;
+          document.body.style.overflowY = 'auto';
+        },
+        onLeaveBack: () => {
+          snapEnabled = false;
+          document.body.style.overflowY = 'auto';
+        },
+      });
+
+      function snapTo(idx) {
+        isSnapping = true;
+        gsap.to(window, {
+          scrollTo: { y: panels[idx], autoKill: false },
+          duration: 1,
+          ease: 'sine.inOut',
+          onComplete() {
+            currentIndex = idx;
+            isSnapping = false;
+          },
+        });
+      }
+      if (document.querySelector('.main-text')) {
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.to('.main-text', {
+          scrollTrigger: {
+            trigger: '.main-visual',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          },
+          y: 300,
+          ease: 'none',
+        });
+      }
+      window.addEventListener(
+        'wheel',
+        (e) => {
+          if (!snapEnabled || isSnapping) return;
+          if (e.deltaY < 0 && currentIndex === 0) {
+            snapEnabled = false;
+            document.body.style.overflowY = 'auto';
+            return;
+          }
+          if (e.deltaY > 0 && currentIndex === panels.length - 1) {
+            snapEnabled = false;
+            document.body.style.overflowY = 'auto';
+            return;
+          }
+          e.preventDefault();
+          if (e.deltaY > 0) snapTo(currentIndex + 1);
+          else snapTo(currentIndex - 1);
+        },
+        { passive: false }
+      );
+
+      ScrollTrigger.refresh();
+
+      const newsSwiper = new Swiper('.news-swiper', {
+        slidesPerView: 4,
+        spaceBetween: 24,
+        loop: false,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+          },
+          576: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 16,
+          },
+          992: {
+            slidesPerView: 2,
+            spaceBetween: 16,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 24,
+          },
+        },
+      });
+
+      const swiper = new Swiper('.popup-swiper', {
+        loop: true,
+        autoplay: { delay: 4000 },
+        pagination: {
+          el: '.popup-pagination',
+          type: 'fraction',
+          formatFractionCurrent: (number) => number,
+          formatFractionTotal: (number) => number,
+        },
+      });
+
+      // 팝업 닫기 & 오늘 하루 숨기기
+      const popup = document.getElementById('rollingPopup');
+      const closeBtn = document.getElementById('popupClose');
+      const noShowChk = document.getElementById('noShowToday');
+      const HIDE_KEY = 'hideRollingPopup';
+
+      // 오늘 숨김 여부 확인
+      if (localStorage.getItem(HIDE_KEY) === new Date().toDateString()) {
+        popup.style.display = 'none';
+      }
+
+      closeBtn.addEventListener('click', () => {
+        if (noShowChk.checked) {
+          localStorage.setItem(HIDE_KEY, new Date().toDateString());
+        }
+        popup.style.display = 'none';
+      });
+      /* Cookie Banner */
+      const cookieBanner = document.getElementById('cookieBanner');
+      const COOKIE_KEY = 'site_cookie_consent';
+
+      function setConsent(val) {
+        localStorage.setItem(COOKIE_KEY, val);
+        cookieBanner.style.display = 'none';
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const consent = localStorage.getItem(COOKIE_KEY);
+        if (consent === 'accepted' || consent === 'declined') {
+          cookieBanner.style.display = 'none';
+        }
+      });
+
+      document
+        .getElementById('accept')
+        .addEventListener('click', () => setConsent('accepted'));
+      document
+        .getElementById('decline')
+        .addEventListener('click', () => setConsent('declined'));
+    });
+  </script>
+</html>

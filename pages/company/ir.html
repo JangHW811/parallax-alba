@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Q-CARES</title>
+  <link rel="stylesheet" href="../../assets/css/layout.css" />
+  <link rel="stylesheet" href="../../assets/css/sub.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+</head>
+<body>
+  <header class="gnb gnb-sub">
+    <div class="container">
+      <h1 class="logo">
+        <a href="/index.html" aria-label="퀄리타스반도체 로고">
+          <span class="blind">퀄리타스반도체</span>
+        </a>
+      </h1>
+      <button class="menu-toggle" aria-label="메뉴 열기">
+        <i class="bi bi-list"></i>
+      </button>
+      <ul class="nav">
+          <li class="nav-item has-sub">
+            <a href="pages/solution/index.html">Solution</a>
+            <div class="nav-hover-area">
+            <div class="mega-menu">
+              <div class="container">
+                <div class="mega-col">
+                <h4>Application</h4>
+                <ul>
+                  <li><a href="#">Overview</a></li>
+                  <li><a href="#">AI / HPC</a></li>
+                  <li><a href="#">Mobile & Edge</a></li>
+                  <li><a href="#">Automotive</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>High-speed Interconnect IP Portfolio</h4>
+                <ul>
+                  <li><a href="#">Overview</a></li>
+                  <li><a href="#">PCI Express</a></li>
+                  <li><a href="#">UCI Express</a></li>
+                  <li><a href="#">MIPI Solution</a></li>
+                  <li><a href="#">Display Solution</a></li>
+                  <li><a href="#">SERDES</a></li>
+                  <li><a href="#">USB</a></li>
+                  <li><a href="#">Ethernet</a></li>
+                  <li><a href="#">SLVS-EC</a></li>
+                </ul>
+              </div>
+            </div>
+            </div>
+            </div>
+          </li>
+          <li class="nav-item has-sub">
+            <a href="pages/support/index.html">Support</a>
+              <div class="nav-hover-area">
+                <div class="mega-menu">
+                  <div class="container">
+                    <div class="mega-col">
+                     <a href="#">Q-CARES</a>
+                    </div>
+                    <div class="mega-col">
+                      <h4>Download Center</h4>
+                      <ul>
+                        <li><a href="#">White paper</a></li>
+                        <li><a href="#">Brochure</a></li>
+                      </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item has-sub">
+            <a href="pages/company/index.html">Company</a>
+              <div class="nav-hover-area">
+                <div class="mega-menu">
+                  <div class="container">
+                    <div class="mega-col">
+                     <a href="#">About Us</a>
+                    </div>
+                    <div class="mega-col">
+                      <h4>IR</h4>
+                      <ul>
+                        <li><a href="#">전자공고</a></li>
+                        <li><a href="#">공시</a></li>
+                        <li><a href="#">공시정보자료규정</a></li>
+                      </ul>
+                  </div>
+                  <div class="mega-col">
+                     <a href="#">Career</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item has-sub">
+            <a href="pages/news-event/index.html">News & Event</a>
+            <div class="nav-hover-area">
+                <div class="mega-menu">
+                  <div class="container">
+                    <div class="mega-col">
+                      <a href="#">News</a>
+                    </div>
+                     <div class="mega-col">
+                      <a href="#">Event</a>
+                    </div>
+                    <div class="mega-col">
+                      <a href="#">Insight</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </li>
+      </ul>
+      <ul class="unit">
+        <li><a href="pages/contact/index.html">Contact us</a></li>
+        <li class="lang-item">
+          <a href="#none" class="lang-toggle"><i class="bi bi-globe"></i></a>
+          <ul class="lang-dropdown">
+            <li><a href="#none" class="active">KR</a></li>
+            <li><a href="#none">EN</a></li>
+            <li><a href="#none">JP</a></li>
+            <li><a href="#none">CN</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="m-submenu">
+        <ul class="m-nav">
+          <li class="nav-item has-sub">
+            <h4 class="title">Solution</h4>
+            <div class="accordion-toggle">Application</div>
+            <div class="submenu">
+              <ul>
+                <li><a href="#">Overview</a></li>
+                <li><a href="#">AI / HPC</a></li>
+                <li><a href="#">Mobile & Edge</a></li>
+                <li><a href="#">Automotive</a></li>
+              </ul>
+            </div>
+  
+            <div class="accordion-toggle">High-speed Interconnect IP Portfolio</div>
+            <div class="submenu">
+              <ul>
+                  <li><a href="#">Overview</a></li>
+                  <li><a href="#">PCI Express</a></li>
+                  <li><a href="#">UCI Express</a></li>
+                  <li><a href="#">MIPI Solution</a></li>
+                  <li><a href="#">Display Solution</a></li>
+                  <li><a href="#">SERDES</a></li>
+                  <li><a href="#">USB</a></li>
+                  <li><a href="#">Ethernet</a></li>
+                  <li><a href="#">SLVS-EC</a></li>
+              </ul>
+            </div>
+          </li>
+           <li class="nav-item has-sub">
+            <h4 class="title">Support</h4>
+            <a href="#none">Q-CARES</a>
+            <div class="accordion-toggle">Download Center</div>
+            <div class="submenu">
+              <ul>
+                  <li><a href="#">White paper</a></li>
+                  <li><a href="#">Brochure</a></li>
+              </ul>
+            </div>
+          </li>
+            <li class="nav-item has-sub">
+            <h4 class="title">Company</h4>
+            <a href="#none">About Us</a>
+            <div class="accordion-toggle">IR</div>
+            <div class="submenu">
+              <ul>
+                <li><a href="#">전자공고</a></li>
+                <li><a href="#">공시</a></li>
+                <li><a href="#">공시정보자료규정</a></li>
+              </ul>
+            </div>
+             <a href="#none">Career</a>
+          </li>
+           <li class="nav-item has-sub">
+            <h4 class="title">News & Event</h4>
+            <a href="#none">News Us</a>
+            <a href="#none">Event</a>
+            <a href="#none">Insight</a>
+          </li>
+          <li class="mega-bottom">
+              <ul>
+                <li>
+                  <a href="#none">KR</a>
+                </li>
+                <li>
+                  <a href="#none" class="active">EN</a>
+                </li>
+                  <li>
+                  <a href="#none">JP</a>
+                </li>
+                  <li>
+                  <a href="#none">CN</a>
+                </li>
+              </ul>
+              <a href="#none">Contact us</a>
+            </li>
+        </ul>
+    </div>
+</div>
+</header>
+
+<main class="contact-main download-center ir-wrap">
+    <div class="container">
+        <h1 class="page-title">IR</h1>
+    </div>
+    <section class="wrap">
+        <nav class="tab-nav">
+            <div class="container">
+                <a href="#announcement" class="tab-btn active" data-tab="announcement">전자공고</a>
+                <a href="#disclosure" class="tab-btn" data-tab="disclosure">공시</a>
+                <a href="#regulation" class="tab-btn" data-tab="regulation">공시정보자료규정</a>
+            </div>
+        </nav>
+        <div class="tab-panels">
+            <div class="tab-panel active" id="announcement">
+            <div class="container">
+                <div class="filter-bar">
+                    <h4 class="title">전자공고</h4>
+                    <div class="total">총 <span>12</span> 건</div>
+                </div>
+                <div class="cards-wrap">
+                    <div class="cards-grid">
+                        <div class="card">
+                            <a href="#none ">
+                                <div class="card-text">
+                                    <div class="category">전자공고</div>
+                                    <p class="text">사외이사의 선임ㆍ해임 또는 중도퇴임에 관한 신고 <i class="bi bi-arrow-up-right"></i></p>
+                                    <div class="meta">
+                                        <span>퀄리타스반도체</span>
+                                        <span>2025년 3월 31일</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card">
+                            <a href="#none ">
+                                <div class="card-text">
+                                    <div class="category">전자공고</div>
+                                    <p class="text">사외이사의 선임ㆍ해임 또는 중도퇴임에 관한 신고 <i class="bi bi-arrow-up-right"></i></p>
+                                    <div class="meta">
+                                        <span>퀄리타스반도체</span>
+                                        <span>2025년 3월 31일</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card">
+                            <a href="#none ">
+                                <div class="card-text">
+                                    <div class="category">전자공고</div>
+                                    <p class="text">사외이사의 선임ㆍ해임 또는 중도퇴임에 관한 신고 <i class="bi bi-arrow-up-right"></i></p>
+                                    <div class="meta">
+                                        <span>퀄리타스반도체</span>
+                                        <span>2025년 3월 31일</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card">
+                            <a href="#none ">
+                                <div class="card-text">
+                                    <div class="category">전자공고</div>
+                                    <p class="text">사외이사의 선임ㆍ해임 또는 중도퇴임에 관한 신고 <i class="bi bi-arrow-up-right"></i></p>
+                                    <div class="meta">
+                                        <span>퀄리타스반도체</span>
+                                        <span>2025년 3월 31일</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card">
+                            <a href="#none ">
+                                <div class="card-text">
+                                    <div class="category">전자공고</div>
+                                    <p class="text">사외이사의 선임ㆍ해임 또는 중도퇴임에 관한 신고 <i class="bi bi-arrow-up-right"></i></p>
+                                    <div class="meta">
+                                        <span>퀄리타스반도체</span>
+                                        <span>2025년 3월 31일</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card">
+                            <a href="#none ">
+                                <div class="card-text">
+                                    <div class="category">전자공고</div>
+                                    <p class="text">사외이사의 선임ㆍ해임 또는 중도퇴임에 관한 신고 <i class="bi bi-arrow-up-right"></i></p>
+                                    <div class="meta">
+                                        <span>퀄리타스반도체</span>
+                                        <span>2025년 3월 31일</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card">
+                            <a href="#none ">
+                                <div class="card-text">
+                                    <div class="category">전자공고</div>
+                                    <p class="text">사외이사의 선임ㆍ해임 또는 중도퇴임에 관한 신고 <i class="bi bi-arrow-up-right"></i></p>
+                                    <div class="meta">
+                                        <span>퀄리타스반도체</span>
+                                        <span>2025년 3월 31일</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card">
+                            <a href="#none ">
+                                <div class="card-text">
+                                    <div class="category">전자공고</div>
+                                    <p class="text">사외이사의 선임ㆍ해임 또는 중도퇴임에 관한 신고 <i class="bi bi-arrow-up-right"></i></p>
+                                    <div class="meta">
+                                        <span>퀄리타스반도체</span>
+                                        <span>2025년 3월 31일</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card">
+                            <a href="#none ">
+                                <div class="card-text">
+                                    <div class="category">전자공고</div>
+                                    <p class="text">사외이사의 선임ㆍ해임 또는 중도퇴임에 관한 신고 <i class="bi bi-arrow-up-right"></i></p>
+                                    <div class="meta">
+                                        <span>퀄리타스반도체</span>
+                                        <span>2025년 3월 31일</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card">
+                            <a href="#none ">
+                                <div class="card-text">
+                                    <div class="category">전자공고</div>
+                                    <p class="text">사외이사의 선임ㆍ해임 또는 중도퇴임에 관한 신고 <i class="bi bi-arrow-up-right"></i></p>
+                                    <div class="meta">
+                                        <span>퀄리타스반도체</span>
+                                        <span>2025년 3월 31일</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div> 
+                    </div>
+                    <ul class="pagination">
+                        <li class="pagination-item">
+                            <a href="#" class="page-link first disabled" aria-label="First">
+                                <i class="bi bi-chevron-double-left"></i>
+                            </a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="#" class="page-link prev disabled" aria-label="Previous">
+                                <i class="bi bi-chevron-left"></i>
+                            </a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="#" class="page-link page-number active">1</a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="#" class="page-link page-number">2</a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="#" class="page-link page-number">3</a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="#" class="page-link page-number">4</a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="#" class="page-link page-number">5</a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="#" class="page-link next" aria-label="Next">
+                                <i class="bi bi-chevron-right"></i>
+                            </a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="#" class="page-link last" aria-label="Last">
+                                <i class="bi bi-chevron-double-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+            <div class="tab-panel" id="disclosure">
+            <div class="container">
+                <div class="filter-bar">
+                    <h4 class="title">공시</h4>
+                    <div class="total">총 <span>12</span> 건</div>
+                </div>
+                <div class="cards-wrap">
+                    <div class="cards-grid">
+                        <div class="card">
+                            <a href="#none ">
+                                <div class="card-text">
+                                    <div class="category">공시</div>
+                                    <p class="text">사외이사의 선임ㆍ해임 또는 중도퇴임에 관한 신고 <i class="bi bi-link-45deg"></i></p>
+                                    <div class="meta">
+                                        <span>퀄리타스반도체</span>
+                                        <span>2025년 3월 31일</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card">
+                            <a href="#none ">
+                                <div class="card-text">
+                                    <div class="category">공시</div>
+                                    <p class="text">사외이사의 선임ㆍ해임 또는 중도퇴임에 관한 신고</p>
+                                    <div class="meta">
+                                        <span>퀄리타스반도체</span>
+                                        <span>2025년 3월 31일</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card">
+                            <a href="#none ">
+                                <div class="card-text">
+                                    <div class="category">공시</div>
+                                    <p class="text">사외이사의 선임ㆍ해임 또는 중도퇴임에 관한 신고</p>
+                                    <div class="meta">
+                                        <span>퀄리타스반도체</span>
+                                        <span>2025년 3월 31일</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card">
+                            <a href="#none ">
+                                <div class="card-text">
+                                    <div class="category">공시</div>
+                                    <p class="text">사외이사의 선임ㆍ해임 또는 중도퇴임에 관한 신고 <i class="bi bi-link-45deg"></i></p>
+                                    <div class="meta">
+                                        <span>퀄리타스반도체</span>
+                                        <span>2025년 3월 31일</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card">
+                            <a href="#none ">
+                                <div class="card-text">
+                                    <div class="category">공시</div>
+                                    <p class="text">사외이사의 선임ㆍ해임 또는 중도퇴임에 관한 신고 <i class="bi bi-link-45deg"></i></p>
+                                    <div class="meta">
+                                        <span>퀄리타스반도체</span>
+                                        <span>2025년 3월 31일</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card">
+                            <a href="#none ">
+                                <div class="card-text">
+                                    <div class="category">공시</div>
+                                    <p class="text">사외이사의 선임ㆍ해임 또는 중도퇴임에 관한 신고</p>
+                                    <div class="meta">
+                                        <span>퀄리타스반도체</span>
+                                        <span>2025년 3월 31일</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="pagination">
+                        <li class="pagination-item">
+                            <a href="#" class="page-link first disabled" aria-label="First">
+                                <i class="bi bi-chevron-double-left"></i>
+                            </a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="#" class="page-link prev disabled" aria-label="Previous">
+                                <i class="bi bi-chevron-left"></i>
+                            </a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="#" class="page-link page-number active">1</a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="#" class="page-link page-number">2</a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="#" class="page-link page-number">3</a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="#" class="page-link page-number">4</a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="#" class="page-link page-number">5</a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="#" class="page-link next" aria-label="Next">
+                                <i class="bi bi-chevron-right"></i>
+                            </a>
+                        </li>
+                        <li class="pagination-item">
+                            <a href="#" class="page-link last" aria-label="Last">
+                                <i class="bi bi-chevron-double-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+            <div class="tab-panel" id="regulation">
+            <div class="container">
+                <div class="filter-bar">
+                    <h4 class="title">공시정보자료규정</h4>
+                </div>
+                <div class="regulation">
+                    <div class="regulation-item active">
+                        <button class="regulation-header">
+                          <span>제1장 총칙</span>
+                          <span class="regulation-icon"><i class="bi bi-dash"></i></span>
+                        </button>
+                        <div class="regulation-content">
+                            <h4>제1조 (목적)</h4>
+                            <p>본 규정은 「자본시장과 금융투자업에 관한 법률」 (이하 “법” 이라 한다) 및 제반 법규에 따 른 신속 정확한 공시 및 임원 직원의 내부자거래 방지를 위하여 ㈜퀄리타스반도체(이하 “회사”라고 한다.) 내부정보의 종합관리 및 적절한 공개 등에 관한 사항을 정함을 목적으로 한다.</p>
+                            <h4>제2조 (용어의 정의)</h4>
+                            <ol>
+                                <li>본 규정에서 “내부정보”라 함은 한국거래소 (이하 “거래소”라 한다)의 코스닥시장공시규정(이하 “공시규정”이라 한다) 제1편에 의한 공시의무사항과 그 밖에 회사의 경영 또는 재산상황 등에 관한 것으로서 투자자의 투자판단에 영향을 미칠 수 있는 사항을 말한다.</li>
+                                <li>본 규정에서 “공시책임자”라 함은 공시규정 제2조제4항에 따라 회사를 대표하여 신고업무를 수행할 수 있는 자를 말한다.</li>
+                                <li>본 규정에서 “임원”이라 함은 이사(「상법」 제401조의2제1항 각 호의 어느 하나에 해당하는 자를 포함한다) 및 감사를 말한다.</li>
+                                <li>제1항부터 제3항 이외에 본 규정에서 사용하는 용어의 정의에 관하여는 관련 법령과 규정에서 사용하는 용어의 정의에 의한다.</li>
+                            </ol>
+                            <h4>제3조 (적용범위)</h4>
+                            <p>공시, 내부자거래 및 내부정보관리에 관한 사항은 관련 법규 또는 정관에 정한 것을 제외하고는 본 규정에 따른다.</p>
+                        </div>
+                    </div>
+
+                    <div class="regulation-item">
+                        <button class="regulation-header">
+                        <span>제2장 내부정보의 관리</span>
+                        <span class="regulation-icon"><i class="bi bi-plus"></i></span>
+                        </button>
+                        <div class="regulation-content">
+                        </div>
+                    </div>
+
+                    <div class="regulation-item">
+                        <button class="regulation-header">
+                        <span>제3장 내부정보의 공개</span>
+                        <span class="regulation-icon"><i class="bi bi-plus"></i></span>
+                        </button>
+                        <div class="regulation-content"></div>
+                    </div>
+
+                    <div class="regulation-item">
+                        <button class="regulation-header">
+                        <span>제4장 내부자 거래 등에 대한 규제</span>
+                        <span class="regulation-icon"><i class="bi bi-plus"></i></span>
+                        </button>
+                        <div class="regulation-content"></div>
+                    </div>
+
+                    <div class="regulation-item">
+                        <button class="regulation-header">
+                        <span>제5장 보칙</span>
+                        <span class="regulation-icon"><i class="bi bi-plus"></i></span>
+                        </button>
+                        <div class="regulation-content"></div>
+                    </div>
+
+                    <div class="regulation-item">
+                        <button class="regulation-header">
+                        <span>부칙</span>
+                        <span class="regulation-icon"><i class="bi bi-plus"></i></span>
+                        </button>
+                        <div class="regulation-content"></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+      <div class="container">
+        <div class="footer-top-content">
+          <div class="footer-nav">
+              <div class="footer-nav-item">
+                  <h4 class="footer-nav-title">
+                    Solution
+                  </h4>
+                  <ul class="footer-nav-list">
+                      <li>
+                        <a href="#none">Application</a>
+                      </li>
+                      <li>
+                        <a href="#none">High-speed Interconnect IP Portfolio</a>
+                      </li>
+                  </ul>
+              </div>
+              <div class="footer-nav-item">
+                  <h4 class="footer-nav-title">
+                    Support
+                  </h4>
+                  <ul class="footer-nav-list">
+                      <li>
+                        <a href="#none">Q-Cares</a>
+                      </li>
+                      <li>
+                        <a href="#none">Download center</a>
+                      </li>
+                  </ul>
+              </div>
+               <div class="footer-nav-item">
+                  <h4 class="footer-nav-title">
+                    Company
+                  </h4>
+                  <ul class="footer-nav-list">
+                      <li>
+                        <a href="#none">About us</a>
+                      </li>
+                      <li>
+                        <a href="#none">IR</a>
+                      </li>
+                       <li>
+                        <a href="#none">Carrer</a>
+                      </li>
+                  </ul>
+              </div>
+                <div class="footer-nav-item">
+                  <h4 class="footer-nav-title">
+                    News & Event
+                  </h4>
+                  <ul class="footer-nav-list">
+                      <li>
+                        <a href="#none">News</a>
+                      </li>
+                      <li>
+                        <a href="#none">Event</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+
+          <div class="footer-info">
+             <h4 class="footer-nav-title">Office</h4>
+             <p>
+                <span>Head Office</span>
+                <span>#609, 8, Seongnam-daero 331 beon-gil, Bundang-gu,<br />
+                  Seongnam-si, Gyeonggi-do</span>
+              </p>
+              <p>
+                <span>R&D Center</span>
+                <span>16F/23F, 8, Seongnam-daero 331 beon-gil, Bundang-gu,<br />Seongnam-si, Gyeonggi-do</span>
+              </p>
+          </div>
+        </div>
+        <div class="footer-bottom-content">
+            <div class="footer-bottom-title">
+                <h4>Qualitas semiconductor Co., Ltd.</h4>
+                <div>
+                  <a href="#none">Private Policy</a>
+                  <a href="#none">Terms of Use</a>
+                </div>
+            </div>
+            <p class="footer-copy">Copyright © Qualitas Semiconductor Co., Ltd. All rights reserved</p>
+        </div>
+      </div>
+  </footer>
+
+<!-- 모달 오버레이 -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal ir-modal">
+    <button class="modal-close" id="modalClose"><i class="bi bi-x-lg"></i></button>
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="category">공시</div>
+        <h2 class="modal-title"> (주)퀄리타스반도체 2023년 사업보고서 게재</h2>
+        <p class="date">
+            <span>퀄리타스반도체</span>
+            <span>2025년 3월 31일</span>
+        </p>
+        <button type="button" class="btn-link">
+            <i class="bi bi-link-45deg"></i>
+        </button>
+        <div class="modal-body">
+            <div class="content">
+            <h2>제 7기 정기주주총회 소집통지서</h2>
+            <br>
+            <p>
+            주주님의 건승과 댁내 평안을 기원합니다.
+            <br>당사는 상법 제363조와 정관 제24조에 의거 아래와 같이 제7기 정기주주총회를 아래와 같이 개최 하오니 참석하여 주시기 바랍니다.
+            </p>
+            <br><br>
+            -     아        래     -
+            <br><br>
+            1. 소 집 일 시 : 2024년 03월 29일(금) 오전 09:00
+            <br><br>
+            2. 소 집 장 소 : 경기도 성남시 분당구 성남대로331번길 8 킨스타워 7층 대강당
+            <br>(※주차공간이 협소하오니, 대중교통을 이용바랍니다.)
+            <br><br>
+            3. 의 결 사 항 :
+            <br><br>
+            <br>1) 보고사항 : 감사보고, 영업보고, 외부감사인 선임보고,내부회계관리제도 운영실태보고
+            <br>2) 부의안건
+            <br>가. 제1호 의안 : 제7기 사업연도(2023.1.1~2023.12.31)에 대한 재무상태표, 손익계산서, 결손금처리계산서 승인의 건
+            <br>나. 제2호 의안 : 정관 일부 변경의 건
+            <br>다. 제3호 의안 : 사내이사 선임의 건 
+            <br>제3-1호 의안 : 김두호 사내이사 선임 (중임)
+            <br>제3-2호 의안 : 최광천 사내이사 선임 (중임)
+            <br>라. 제4호 의안 : 이사 보수한도 승인의 건 
+            <br>마. 제5호 의안 : 감사 보수한도 승인의 건 
+            <br>바. 제6호 의안 : 임원 퇴직금 규정 변경의 건
+             <br><br>
+            4. 주주총회 참석 준비물
+            <br> - 직접행사 : 신분증
+            <br> - 대리행사 : 위임장(인감날인), 인감증명서(3개월 이내), 대리인 신분증
+            <br><br> 
+            <br>2024년 3월 12일 
+            <br><br>
+            <h4>주식회사 퀄리타스반도체 </h4>
+            <p>대표이사 김 두 호</p>
+            <h6>(직인생략)</h6>
+            </div>
+            
+            <ul class="file-download">
+                <li>
+                    <a href="#none">
+                        <p class="title">
+                            <i class="bi bi-paperclip"></i>
+                            퀄리타스반도체 우리사주조합 창립총회 공고(PDF)
+                        </p>
+                        <i class="bi bi-download"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </div>
+</div>
+
+</body>
+<script src="../../assets/js/script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.regulation-item .regulation-header')
+  .forEach(header => {
+    header.addEventListener('click', () => {
+      header.parentElement.classList.toggle('active');
+    });
+});
+
+  const html    = document.documentElement;
+  const overlay = document.getElementById('modalOverlay');
+  const closeBtn = document.getElementById('modalClose');
+
+  document.querySelectorAll('#disclosure .card').forEach(card => {
+    card.addEventListener('click', () => {
+      const cat = card.querySelector('.category').textContent;
+      const ttl = card.querySelector('.text').textContent;
+      document.querySelector('.modal-header .category').textContent    = cat;
+      document.querySelector('.modal-header .modal-title').textContent = ttl;
+
+      html.style.overflow = 'hidden';
+      overlay.classList.add('active');
+    });
+  });
+
+  function closeModal() {
+    overlay.classList.remove('active');
+    html.style.overflow = 'auto';
+  }
+  closeBtn.addEventListener('click', closeModal);
+
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeModal();
+  });
+
+
+
+});
+</script>
+</html>
