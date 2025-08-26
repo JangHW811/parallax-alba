@@ -2,20 +2,23 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
-    <title>Pinned Cross-Reveal + Real Next Section Cover</title>
+    <title>Pin BG + Word-by-Word Color Switch</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <!-- 데모용 폰트 -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&family=Noto+Serif+KR:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
       rel="stylesheet"
     />
 
     <style>
+      :root {
+        --start-color: #ffffff; /* 시작 텍스트 색 */
+        --end-color: #111111; /* 최종 텍스트 색 */
+      }
       * {
         box-sizing: border-box;
         margin: 0;
@@ -23,7 +26,7 @@
       body {
         font-family: 'Noto Sans KR', system-ui, -apple-system, Segoe UI, Roboto,
           sans-serif;
-        background: #d6d2c4;
+        background: #e9e6dc;
         color: #111;
       }
       .spacer {
@@ -32,95 +35,57 @@
         place-items: center;
       }
 
-      /* ===== 핀되는 섹션 ===== */
-      .pin-wrap {
+      /* ===== 고정될 히어로 ===== */
+      .hero {
+        position: relative;
         height: 100vh;
+        overflow: clip;
         display: grid;
         place-items: center;
+        isolation: isolate;
       }
-      .inner {
-        width: min(86vw, 1100px);
-        height: min(88vh, 900px);
-        display: grid;
-        grid-template-rows: auto 1fr;
-        gap: 20px;
-      }
-
-      .typo {
-        position: relative;
-        height: clamp(60px, 16vh, 140px);
-        overflow: hidden;
-      }
-      .title {
+      .hero__bg {
         position: absolute;
         inset: 0;
+        background: url('https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=1920&auto=format&fit=crop')
+          center/cover no-repeat;
+        transform: scale(1);
+        will-change: transform;
+        z-index: -1;
+      }
+      .hero__content {
+        width: min(90vw, 1100px);
+        padding: clamp(16px, 4vh, 32px);
+        color: var(--start-color);
+        text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+      }
+      .hero__title {
+        font-size: clamp(28px, 6vw, 64px);
+        line-height: 1.06;
+        margin-bottom: clamp(14px, 2vh, 22px);
+        color: var(--start-color);
+      }
+      .lines {
         display: grid;
-        place-items: center;
-        font: 700 clamp(26px, 5.5vw, 56px) / 1.08 'Noto Serif KR', serif;
-        opacity: 0;
-        transform: translateY(10px);
+        gap: clamp(8px, 1.2vh, 14px);
       }
-      .title.is-active {
-        opacity: 1;
-        transform: translateY(0);
+      .line {
+        font-size: clamp(16px, 2.2vw, 22px);
+        line-height: 1.6;
       }
+      .word {
+        color: var(--start-color);
+      } /* 시작은 전부 시작색 */
 
-      .stage {
-        position: relative;
-        width: 100%;
-        aspect-ratio: 16/9;
-        overflow: hidden;
-        border-radius: 14px;
-        background: #000;
-        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
-      }
-      .stage img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transform: translateY(0%);
-      }
-      .stage img:nth-child(1) {
-        z-index: 4;
-      }
-      .stage img:nth-child(2) {
-        z-index: 3;
-      }
-      .stage img:nth-child(3) {
-        z-index: 2;
-      }
-      .stage img:nth-child(4) {
-        z-index: 1;
-      }
-
-      /* ===== 실제 next 섹션 ===== */
-      .next-placeholder {
-        height: 0;
-      } /* next가 고정될 때 흐름 유지용 플레이스홀더 */
-
+      /* ===== 다음 섹션 ===== */
       .next {
         background: #f7f4ea;
         color: #1b1b1b;
-        min-height: 100vh;
         padding: clamp(28px, 6vw, 64px) 6vw;
-        position: relative;
-        z-index: 0; /* 평소엔 일반 흐름 */
-        will-change: transform;
+        min-height: 140vh;
       }
-      /* 덮기 애니메이션 동안만 고정 오버레이로 변신 */
-      .next.is-overlay {
-        position: fixed;
-        inset: 0;
-        z-index: 10;
-        transform: translateY(
-          100%
-        ); /* 화면 아래 대기 상태 (GSAP이 yPercent로 제어) */
-      }
-
       .next h2 {
-        font: 700 clamp(26px, 4.8vw, 48px) / 1.1 'Noto Serif KR', serif;
+        font-size: clamp(24px, 5vw, 48px);
         margin: 0 0 12px;
       }
       .next p {
@@ -131,114 +96,100 @@
     </style>
   </head>
   <body>
-    <div class="spacer"><h2>위 컨텐츠</h2></div>
+    <div class="spacer"><h2>위쪽 컨텐츠</h2></div>
 
-    <section class="pin-wrap">
-      <div class="inner">
-        <div class="typo" id="typo">
-          <h2 class="title is-active">World First Climate Control</h2>
-        </div>
+    <section class="hero" id="hero">
+      <div class="hero__bg" id="heroBG"></div>
 
-        <div class="stage" id="stage">
-          <img src="https://picsum.photos/id/1015/1600/900" alt="" />
-          <img src="https://picsum.photos/id/1025/1600/900" alt="" />
-          <img src="https://picsum.photos/id/1035/1600/900" alt="" />
-          <img src="https://picsum.photos/id/1043/1600/900" alt="" />
+      <div class="hero__content">
+        <h1 class="hero__title">Adaptive Living Spaces</h1>
+
+        <!-- 원하는 문장들 -->
+        <div class="lines" id="lines">
+          <p class="line">
+            실내·실외 데이터를 결합해 시간대와 활동에 맞는 환경을 만듭니다.
+          </p>
+          <p class="line">온도, 습도, 조도, 공기 흐름을 정밀하게 제어합니다.</p>
+          <p class="line">
+            사용자 패턴을 학습하여 다음 행동을 미리 준비합니다.
+          </p>
+          <p class="line">더 적은 에너지로 더 높은 쾌적함을 제공합니다.</p>
+          <p class="line">
+            공간의 역할이 바뀌어도 시스템은 자연스럽게 적응합니다.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- next가 고정으로 빠지는 동안 레이아웃 유지용 -->
-    <div class="next-placeholder" id="nextPH"></div>
-
-    <!-- 진짜 next 섹션(이 요소 자체가 올라와서 덮음) -->
-    <section class="next" id="next">
-      <h2>Adaptive Living Spaces</h2>
+    <section class="next">
+      <h2>다음 섹션 시작</h2>
       <p>
-        실내/실외 데이터를 통합 분석해 시간대·활동·재실 인원 변화에 맞춰
-        온도·습도·공기 흐름을 능동적으로 조율합니다. 이 섹션은 위의 핀 구간
-        막바지에 화면 아래에서 올라와 ‘직접’ 덮습니다.
+        위 히어로 영역은 스크롤 중 화면에 고정되고, 스크롤 진행에 따라 텍스트가
+        **단어 단위로 즉시(end-color로) 색이 전환**됩니다. 모든 단어가 바뀌면
+        pin이 해제되어 이 영역으로 넘어옵니다.
       </p>
-      <div style="height: 120vh"></div>
+      <div style="height: 100vh"></div>
     </section>
 
     <script>
       gsap.registerPlugin(ScrollTrigger);
 
-      const stageImgs = gsap.utils.toArray('#stage img');
-      const next = document.getElementById('next');
-      const nextPH = document.getElementById('nextPH');
+      // ===== 단어 단위로 span 래핑 =====
+      function wrapWords(el) {
+        // 공백 토큰을 보존하면서 단어만 span으로 감싸기
+        const tokens = el.textContent.split(/(\s+)/); // 공백 캡쳐
+        el.innerHTML = tokens
+          .map((tok) => {
+            if (/^\s+$/.test(tok)) return tok; // 공백은 그대로
+            return `<span class="word">${tok}</span>`; // 단어만 래핑
+          })
+          .join('');
+      }
 
-      // 스크롤/감도
-      const steps = stageImgs.length - 1; // 이미지 교차 횟수
-      const SPEED = 1.6; // 느리게 하려면 ↑
-      const SCRUB = 1.2;
+      document.querySelectorAll('.line').forEach(wrapWords);
 
-      // 핀 + 이미지 교차 전환
+      const words = Array.from(document.querySelectorAll('.word'));
+      const totalWords = words.length;
+
+      // ===== ScrollTrigger: hero 고정 + 단어별 즉시 색 전환 =====
+      const SPEED = 1.0; // ↑ 키우면 더 긴 스크롤 필요
+      const SCRUB = 1.0; // 관성 (원하면 1.2~1.6)
+      const END_COL = getComputedStyle(document.documentElement)
+        .getPropertyValue('--end-color')
+        .trim();
+
+      // 타임라인 생성 (총 길이를 단어 수로 설정)
       const tl = gsap.timeline({
         defaults: { ease: 'none' },
         scrollTrigger: {
-          trigger: '.pin-wrap',
+          trigger: '.hero',
           start: 'top top',
-          end: '+=' + window.innerHeight * steps * SPEED,
+          end: () => '+=' + window.innerHeight * totalWords * 0.35 * SPEED,
           scrub: SCRUB,
           pin: true,
           anticipatePin: 1,
+          // snap 안 씀: 바로 바뀌는 느낌 유지 (원하면 snap 추가 가능)
         },
       });
 
-      // 위에서부터 한 장씩 들어올리기
-      stageImgs.forEach((img, i) => {
-        if (i === stageImgs.length - 1) return;
-        tl.to(img, { yPercent: -100, duration: 1 }, i);
+      // 타임라인의 총 길이를 'totalWords'로 만들기 위한 더미 구간
+      tl.to({}, { duration: totalWords }, 0);
+
+      // 각 단어: 해당 시점에 '즉시' end-color로 전환 (duration: 0)
+      words.forEach((w, i) => {
+        tl.to(w, { color: END_COL, duration: 0 }, i); // i초 지점에서 바로 체인지
       });
 
-      // ====== 여기부터 핵심: next 섹션이 '진짜로' 올라와 덮기 ======
-      // 덮기 시작 타이밍(필요에 따라 조절: 숫자 클수록 더 늦게 덮기 시작)
-      const coverStart = Math.max(0, steps - 0.7);
-
-      // overlay 모드 토글 함수(레이아웃 점프 방지용 플레이스홀더 포함)
-      function setOverlay(on) {
-        if (on) {
-          nextPH.style.height = next.offsetHeight + 'px'; // 흐름 유지
-          next.classList.add('is-overlay');
-          gsap.set(next, { yPercent: 100 }); // 화면 아래 대기
-        } else {
-          next.classList.remove('is-overlay');
-          gsap.set(next, { clearProps: 'transform' });
-          nextPH.style.height = '0px';
-        }
-      }
-
-      // next를 화면 아래(100%) → 0%로 끌어올려 덮기
+      // (선택) 배경 살짝 줌인/줌아웃으로 생동감
       tl.fromTo(
-        next,
-        { yPercent: 100 },
-        {
-          yPercent: 0,
-          duration: 0.8,
-          onStart: () => setOverlay(true),
-          onReverseComplete: () => setOverlay(false),
-        },
-        coverStart
+        '#heroBG',
+        { scale: 1 },
+        { scale: 1.06, duration: totalWords },
+        0
       );
 
-      // 핀이 끝나고 흐름으로 자연 전환
-      tl.eventCallback('onComplete', () => setOverlay(false));
-
-      // 위로 스크롤해서 핀 구간으로 다시 들어오면 다시 overlay
-      ScrollTrigger.create({
-        trigger: '.pin-wrap',
-        start: 'bottom bottom',
-        end: 'bottom top',
-        onEnterBack: () => setOverlay(true),
-        onLeave: () => setOverlay(false),
-      });
-
-      addEventListener('resize', () => {
-        if (!next.classList.contains('is-overlay')) nextPH.style.height = '0px';
-        ScrollTrigger.refresh();
-      });
+      // 리사이즈 대응
+      addEventListener('resize', () => ScrollTrigger.refresh());
     </script>
   </body>
 </html>

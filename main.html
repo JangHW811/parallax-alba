@@ -831,18 +831,6 @@
         },
       });
 
-      function snapTo(idx) {
-        isSnapping = true;
-        gsap.to(window, {
-          scrollTo: { y: panels[idx], autoKill: false },
-          duration: 1,
-          ease: 'sine.inOut',
-          onComplete() {
-            currentIndex = idx;
-            isSnapping = false;
-          },
-        });
-      }
       if (document.querySelector('.main-text')) {
         gsap.registerPlugin(ScrollTrigger);
 
@@ -866,14 +854,11 @@
             document.body.style.overflowY = 'auto';
             return;
           }
-          if (e.deltaY > 0 && currentIndex === panels.length - 1) {
+          if (e.deltaY > 0) {
             snapEnabled = false;
             document.body.style.overflowY = 'auto';
             return;
           }
-          e.preventDefault();
-          if (e.deltaY > 0) snapTo(currentIndex + 1);
-          else snapTo(currentIndex - 1);
         },
         { passive: false }
       );
