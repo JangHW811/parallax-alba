@@ -2,15 +2,16 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
-    <title>Pinned Cross-Reveal with Real Next Panel</title>
+    <title>Pinned Cross-Reveal + Real Next Section Cover</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <!-- 데모용 폰트 -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&family=Noto+Serif+KR:wght@700&family=Playfair+Display:wght@700&family=Poppins:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&family=Noto+Serif+KR:wght@700&display=swap"
       rel="stylesheet"
     />
 
@@ -20,7 +21,7 @@
         margin: 0;
       }
       body {
-        font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans,
+        font-family: 'Noto Sans KR', system-ui, -apple-system, Segoe UI, Roboto,
           sans-serif;
         background: #d6d2c4;
         color: #111;
@@ -31,25 +32,23 @@
         place-items: center;
       }
 
-      /* 핀될 섹션 */
+      /* ===== 핀되는 섹션 ===== */
       .pin-wrap {
         height: 100vh;
         display: grid;
         place-items: center;
       }
-
       .inner {
         width: min(86vw, 1100px);
         height: min(88vh, 900px);
         display: grid;
-        grid-template-rows: auto 1fr; /* 타이틀 / 스테이지 */
-        gap: clamp(12px, 2.5vh, 28px);
+        grid-template-rows: auto 1fr;
+        gap: 20px;
       }
 
-      /* ===== 타이틀(폰트 페이드 교체) ===== */
       .typo {
         position: relative;
-        height: clamp(60px, 16vh, 150px);
+        height: clamp(60px, 16vh, 140px);
         overflow: hidden;
       }
       .title {
@@ -57,32 +56,15 @@
         inset: 0;
         display: grid;
         place-items: center;
-        font-size: clamp(24px, 5.8vw, 60px);
-        line-height: 1.08;
-        text-align: center;
-        letter-spacing: -0.02em;
-        color: #1c1c1c;
-        filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.12));
+        font: 700 clamp(26px, 5.5vw, 56px) / 1.08 'Noto Serif KR', serif;
         opacity: 0;
-        will-change: opacity, transform;
+        transform: translateY(10px);
       }
       .title.is-active {
         opacity: 1;
-      }
-      .font-1 {
-        font-family: 'Noto Sans KR', 'Poppins', sans-serif;
-      }
-      .font-2 {
-        font-family: 'Noto Serif KR', serif;
-      }
-      .font-3 {
-        font-family: 'Playfair Display', serif;
-      }
-      .font-4 {
-        font-family: 'Poppins', sans-serif;
+        transform: translateY(0);
       }
 
-      /* ===== 스테이지: 이미지 + 최종 컨텐츠 패널 ===== */
       .stage {
         position: relative;
         width: 100%;
@@ -92,62 +74,59 @@
         background: #000;
         box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
       }
-      .stage > * {
+      .stage img {
         position: absolute;
         inset: 0;
         width: 100%;
         height: 100%;
-        will-change: transform, opacity;
+        object-fit: cover;
         transform: translateY(0%);
       }
-      .stage img {
-        object-fit: cover;
-        display: block;
-      }
-
-      /* 쌓이는 순서(위 → 아래) */
-      .stage > *:nth-child(1) {
-        z-index: 5;
-      } /* 맨 위 */
-      .stage > *:nth-child(2) {
+      .stage img:nth-child(1) {
         z-index: 4;
       }
-      .stage > *:nth-child(3) {
+      .stage img:nth-child(2) {
         z-index: 3;
       }
-      .stage > *:nth-child(4) {
+      .stage img:nth-child(3) {
         z-index: 2;
       }
-      .stage > *:nth-child(5) {
+      .stage img:nth-child(4) {
         z-index: 1;
-      } /* 맨 아래(최종 컨텐츠 패널) */
-
-      /* ===== 마지막 패널: 실제 다음 컨텐츠(Adaptive Living Spaces) ===== */
-      .final-panel {
-        background: #f7f4ea; /* 다음 섹션과 톤을 맞추면 전환이 매끈해짐 */
-        color: #1b1b1b;
-        display: grid;
-        grid-template-rows: auto 1fr;
-        padding: clamp(18px, 2.6vh, 28px);
-        gap: clamp(12px, 2vh, 20px);
-      }
-      .final-panel h3 {
-        font: 700 clamp(20px, 3.2vw, 36px) / 1.1 'Noto Serif KR', serif;
-        margin: 0;
-      }
-      .final-panel p {
-        margin: 0;
-        font-size: clamp(14px, 1.6vw, 16px);
-        line-height: 1.6;
-        opacity: 0.9;
-        align-self: start;
-        max-width: 72ch;
       }
 
-      /* 실제 다음 섹션(연속감 유지) */
+      /* ===== 실제 next 섹션 ===== */
+      .next-placeholder {
+        height: 0;
+      } /* next가 고정될 때 흐름 유지용 플레이스홀더 */
+
       .next {
         background: #f7f4ea;
+        color: #1b1b1b;
+        min-height: 100vh;
         padding: clamp(28px, 6vw, 64px) 6vw;
+        position: relative;
+        z-index: 0; /* 평소엔 일반 흐름 */
+        will-change: transform;
+      }
+      /* 덮기 애니메이션 동안만 고정 오버레이로 변신 */
+      .next.is-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 10;
+        transform: translateY(
+          100%
+        ); /* 화면 아래 대기 상태 (GSAP이 yPercent로 제어) */
+      }
+
+      .next h2 {
+        font: 700 clamp(26px, 4.8vw, 48px) / 1.1 'Noto Serif KR', serif;
+        margin: 0 0 12px;
+      }
+      .next p {
+        max-width: 72ch;
+        line-height: 1.7;
+        opacity: 0.9;
       }
     </style>
   </head>
@@ -156,50 +135,29 @@
 
     <section class="pin-wrap">
       <div class="inner">
-        <!-- 타이틀(폰트 페이드) -->
         <div class="typo" id="typo">
-          <h2 class="title font-1 is-active">World First Climate Control</h2>
-          <h2 class="title font-2">World First Climate Control</h2>
-          <h2 class="title font-3">World First Climate Control</h2>
-          <h2 class="title font-4">World First Climate Control</h2>
+          <h2 class="title is-active">World First Climate Control</h2>
         </div>
 
-        <!-- 스테이지: 이미지 4장 + 마지막 '실제 컨텐츠' 패널 -->
         <div class="stage" id="stage">
-          <img src="https://picsum.photos/id/1015/1600/900" alt="img1" />
-          <img src="https://picsum.photos/id/1025/1600/900" alt="img2" />
-          <img src="https://picsum.photos/id/1035/1600/900" alt="img3" />
-          <img src="https://picsum.photos/id/1043/1600/900" alt="img4" />
-
-          <!-- 👇 이게 'Adaptive Living Spaces'가 되는 최종 패널 -->
-          <article class="final-panel" id="finalPanel">
-            <h3>Adaptive Living Spaces</h3>
-            <p>
-              실내/실외 데이터를 통합 분석해 시간대·활동·재실 인원 변화에 맞춰
-              온도·습도·공기 흐름을 능동적으로 조율합니다. 핀 구간이 끝나면 이
-              컨텐츠로 자연스럽게 이어집니다.
-            </p>
-            <div style="align-self: end; opacity: 0.6">
-              Scroll to continue ↓
-            </div>
-          </article>
+          <img src="https://picsum.photos/id/1015/1600/900" alt="" />
+          <img src="https://picsum.photos/id/1025/1600/900" alt="" />
+          <img src="https://picsum.photos/id/1035/1600/900" alt="" />
+          <img src="https://picsum.photos/id/1043/1600/900" alt="" />
         </div>
       </div>
     </section>
 
-    <!-- 실제 다음 섹션(톤을 맞춰 매끄러운 연결감) -->
-    <section class="next">
-      <h2
-        style="
-          font: 700 clamp(26px, 4.8vw, 48px) / 1.1 'Noto Serif KR', serif;
-          margin: 0 0 16px;
-        "
-      >
-        Adaptive Living Spaces
-      </h2>
-      <p style="max-width: 72ch; line-height: 1.7">
-        여기부터는 고정 해제 이후의 본문이에요. 위의 최종 패널과 톤/타이포를
-        맞춰 전환 이질감을 줄였습니다.
+    <!-- next가 고정으로 빠지는 동안 레이아웃 유지용 -->
+    <div class="next-placeholder" id="nextPH"></div>
+
+    <!-- 진짜 next 섹션(이 요소 자체가 올라와서 덮음) -->
+    <section class="next" id="next">
+      <h2>Adaptive Living Spaces</h2>
+      <p>
+        실내/실외 데이터를 통합 분석해 시간대·활동·재실 인원 변화에 맞춰
+        온도·습도·공기 흐름을 능동적으로 조율합니다. 이 섹션은 위의 핀 구간
+        막바지에 화면 아래에서 올라와 ‘직접’ 덮습니다.
       </p>
       <div style="height: 120vh"></div>
     </section>
@@ -207,23 +165,16 @@
     <script>
       gsap.registerPlugin(ScrollTrigger);
 
-      const stage = document.getElementById('stage');
-      const images = gsap.utils.toArray('#stage img'); // 이미지 4장
-      const final = document.getElementById('finalPanel'); // 마지막 실제 컨텐츠 패널
-      const titles = gsap.utils.toArray('#typo .title'); // 타이틀 4개 (이미지 개수에 맞춤)
+      const stageImgs = gsap.utils.toArray('#stage img');
+      const next = document.getElementById('next');
+      const nextPH = document.getElementById('nextPH');
 
-      // 패널 배열(위→아래): 이미지들 + 마지막 컨텐츠 패널
-      const panels = [...images, final];
-      const steps = panels.length - 1; // 전환 횟수
-      const seg = 1; // 타임라인 구간 길이(정규화)
+      // 스크롤/감도
+      const steps = stageImgs.length - 1; // 이미지 교차 횟수
+      const SPEED = 1.6; // 느리게 하려면 ↑
+      const SCRUB = 1.2;
 
-      // 첫 타이틀만 보이게
-      gsap.set(titles.slice(1), { autoAlpha: 0, y: 10 });
-
-      // 스크롤 감도/속도
-      const SPEED = 1.8; // 전체 스크롤 구간 배수(↑ 느려짐)
-      const SCRUB = 1.4; // 스크럽 관성
-
+      // 핀 + 이미지 교차 전환
       const tl = gsap.timeline({
         defaults: { ease: 'none' },
         scrollTrigger: {
@@ -233,40 +184,61 @@
           scrub: SCRUB,
           pin: true,
           anticipatePin: 1,
-          snap: {
-            snapTo: (v) => Math.round(v * steps) / steps, // 각 단계 경계
-            duration: 0.55,
-            ease: 'power1.inOut',
-          },
         },
       });
 
-      // 1) 각 단계: 위 패널을 위로 밀어올려 아래 패널을 드러냄
-      panels.forEach((panel, i) => {
-        if (i === panels.length - 1) return; // 마지막(최종 컨텐츠)은 고정(드러나기만)
-        const t = i * seg;
-        tl.to(panel, { yPercent: -100, duration: seg }, t);
-
-        // 이미지 단계에 맞춰 타이틀 폰트 교체 (최종 패널 나오기 전까지만)
-        if (i < titles.length) {
-          tl.to(
-            titles[i],
-            { autoAlpha: 0, y: -10, duration: 0.35 },
-            t + 0.05
-          ).to(
-            titles[i + 1] ?? titles[i],
-            { autoAlpha: 1, y: 0, duration: 0.45 },
-            t + 0.2
-          );
-        }
+      // 위에서부터 한 장씩 들어올리기
+      stageImgs.forEach((img, i) => {
+        if (i === stageImgs.length - 1) return;
+        tl.to(img, { yPercent: -100, duration: 1 }, i);
       });
 
-      // 2) 최종 패널이 드러나는 시점에 상단 타이틀 자체를 살짝 감춤(선택)
-      const lastSwapT = (panels.length - 2) * seg; // 마지막 전환 시작 타임
-      tl.to('#typo', { autoAlpha: 0, y: -10, duration: 0.35 }, lastSwapT + 0.2);
+      // ====== 여기부터 핵심: next 섹션이 '진짜로' 올라와 덮기 ======
+      // 덮기 시작 타이밍(필요에 따라 조절: 숫자 클수록 더 늦게 덮기 시작)
+      const coverStart = Math.max(0, steps - 0.7);
 
-      // 리사이즈 대응
-      addEventListener('resize', () => ScrollTrigger.refresh());
+      // overlay 모드 토글 함수(레이아웃 점프 방지용 플레이스홀더 포함)
+      function setOverlay(on) {
+        if (on) {
+          nextPH.style.height = next.offsetHeight + 'px'; // 흐름 유지
+          next.classList.add('is-overlay');
+          gsap.set(next, { yPercent: 100 }); // 화면 아래 대기
+        } else {
+          next.classList.remove('is-overlay');
+          gsap.set(next, { clearProps: 'transform' });
+          nextPH.style.height = '0px';
+        }
+      }
+
+      // next를 화면 아래(100%) → 0%로 끌어올려 덮기
+      tl.fromTo(
+        next,
+        { yPercent: 100 },
+        {
+          yPercent: 0,
+          duration: 0.8,
+          onStart: () => setOverlay(true),
+          onReverseComplete: () => setOverlay(false),
+        },
+        coverStart
+      );
+
+      // 핀이 끝나고 흐름으로 자연 전환
+      tl.eventCallback('onComplete', () => setOverlay(false));
+
+      // 위로 스크롤해서 핀 구간으로 다시 들어오면 다시 overlay
+      ScrollTrigger.create({
+        trigger: '.pin-wrap',
+        start: 'bottom bottom',
+        end: 'bottom top',
+        onEnterBack: () => setOverlay(true),
+        onLeave: () => setOverlay(false),
+      });
+
+      addEventListener('resize', () => {
+        if (!next.classList.contains('is-overlay')) nextPH.style.height = '0px';
+        ScrollTrigger.refresh();
+      });
     </script>
   </body>
 </html>
