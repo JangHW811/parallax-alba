@@ -46,8 +46,10 @@
   padding: 128px 0;
 }
 
-#scroll-container {
+.fade-pin-wrapper {
   position: relative;
+  height: 100vh;
+  place-items: center;
 }
 .parallax-section {
   height: 100vh;
@@ -88,24 +90,64 @@
   transform: translateY(100px);
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
-.parallax-section .title {
+
+.parallax-fade {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  will-change: transform;
+  transform: translateY(0%); /* 위 이미지들은 여기서 0 → -100%로 이동 */
+}
+
+.parallax-fade.main-pc-02 {
+  background: url('../images/main-pc-02.jpg') center/cover no-repeat;
+}
+
+.parallax-fade.main-pc-03 {
+  background: url('../images/main-pc-03.jpg') center/cover no-repeat;
+}
+
+.parallax-fade.main-pc-04 {
+  background: url('../images/main-pc-04.jpg') center/cover no-repeat;
+}
+
+.parallax-fade.main-pc-05 {
+  background: url('../images/main-pc-05.jpg') center/cover no-repeat;
+}
+
+.parallax-fade.main-pc-06 {
+  background: url('../images/main-pc-06.jpg') center/cover no-repeat;
+}
+
+.parallax-fade:nth-child(1) {
+  z-index: 5;
+}
+.parallax-fade:nth-child(2) {
+  z-index: 4;
+}
+.parallax-fade:nth-child(3) {
+  z-index: 3;
+}
+.parallax-fade:nth-child(4) {
+  z-index: 2;
+}
+.parallax-fade:nth-child(5) {
+  z-index: 1;
+}
+
+.parallax-fade .title {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
 }
-.parallax-section .title span {
-  color: #000;
-  font-size: 18px;
-  line-height: 140%;
-}
-.parallax-section .title h2 {
+.parallax-fade .title h2 {
   font-size: 64px;
   font-weight: 500;
   line-height: 130%;
   text-align: right;
   color: #000;
 }
-.parallax-section .sub-text {
+.parallax-fade .sub-text {
   position: absolute;
   right: 60px;
   bottom: 65px;
@@ -115,17 +157,34 @@
   align-items: flex-end;
   gap: 24px;
 }
-.parallax-section .sub-text p {
+.parallax-fade .sub-text p {
   font-size: 22px;
   line-height: 145%;
   color: #000;
 }
-.parallax-section .sub-text .main-btn .text {
+.parallax-fade .sub-text .main-btn .text,
+.high-speen-font {
   font-size: 15px;
   line-height: 145%;
   color: #000;
 }
-.parallax-section .sub-text .main-btn {
+.parallax-font {
+  .sub-text,
+  .title {
+    mix-blend-mode: difference;
+    color: white;
+    filter: invert(1);
+  }
+}
+.high-speen-font {
+  mix-blend-mode: difference;
+  color: white;
+  filter: invert(1);
+  font-size: 18px;
+  line-height: 140%;
+}
+
+.parallax-font .sub-text .main-btn {
   background-color: transparent;
   display: inline-block;
   vertical-align: middle;
@@ -140,7 +199,7 @@
   padding: 4px;
   cursor: pointer;
 }
-.parallax-section .sub-text .main-btn:after {
+.parallax-font .sub-text .main-btn:after {
   content: '';
   position: absolute;
   z-index: -1;
@@ -156,9 +215,9 @@
   -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
 }
-.parallax-section .sub-text .main-btn:hover:after,
-.parallax-section .sub-text .main-btn:focus:after,
-.parallax-section .sub-text .main-btn:active:after {
+.parallax-font .sub-text .main-btn:hover:after,
+.parallax-font .sub-text .main-btn:focus:after,
+.parallax-font .sub-text .main-btn:active:after {
   right: 0;
 }
 .section-application {
