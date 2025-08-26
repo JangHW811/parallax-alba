@@ -296,6 +296,7 @@
   display: flex;
   justify-content: space-between;
   height: 100%;
+  align-items: flex-end;
 }
 .section-application .img-content .img-links {
   display: flex;
@@ -315,6 +316,7 @@
 .section-application .img-content .img-area {
   height: 100%;
   aspect-ratio: 444 / 250;
+  max-width: 60%;
   object-fit: cover;
   overflow: hidden;
   right: 0;
