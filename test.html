@@ -2,10 +2,18 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
-    <title>GSAP Cross Reveal (Pinned Stack)</title>
+    <title>GSAP Cross-Reveal + Font Fade</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- 데모용 웹폰트 (같은 문구, 폰트만 바뀌게) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&family=Noto+Serif+KR:wght@700&family=Playfair+Display:wght@700&family=Poppins:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
       * {
         box-sizing: border-box;
@@ -17,26 +25,76 @@
         background: #d6d2c4;
         color: #111;
       }
-
       .spacer {
         height: 80vh;
         display: grid;
         place-items: center;
       }
 
-      /* 고정될 영역(가운데 박스) */
-      .stage {
-        position: relative;
-        width: min(86vw, 1100px);
-        margin: 0 auto;
-        aspect-ratio: 16/9; /* 원하는 비율 */
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
-        overflow: hidden;
-        background: #000;
+      /* 핀(고정)될 전체 래퍼 */
+      .pin-wrap {
+        height: 100vh;
+        display: grid;
+        place-items: center;
       }
 
-      /* 이미지 스택: 모두 동일한 자리에 절대 배치 */
+      /* 가운데 레이아웃: 상단 타이포 + 하단 이미지 스테이지 */
+      .inner {
+        width: min(86vw, 1100px);
+        height: min(86vh, 860px);
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: clamp(12px, 2.5vh, 28px);
+      }
+
+      /* ===== 타이포(제목) ===== */
+      .typo {
+        position: relative;
+        height: clamp(60px, 16vh, 150px);
+        overflow: hidden;
+      }
+      .title {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        font-size: clamp(24px, 5.8vw, 60px);
+        line-height: 1.08;
+        text-align: center;
+        letter-spacing: -0.02em;
+        color: #1c1c1c;
+        filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.12));
+        opacity: 0; /* GSAP으로 제어 (첫 타이틀만 1로 올림) */
+        will-change: opacity, transform;
+      }
+      .title.is-active {
+        opacity: 1;
+      }
+
+      /* 각 단계의 폰트 */
+      .font-1 {
+        font-family: 'Noto Sans KR', 'Poppins', sans-serif;
+      }
+      .font-2 {
+        font-family: 'Noto Serif KR', serif;
+      }
+      .font-3 {
+        font-family: 'Playfair Display', serif;
+      }
+      .font-4 {
+        font-family: 'Poppins', sans-serif;
+      }
+
+      /* ===== 이미지 스테이지 (겹침) ===== */
+      .stage {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+        border-radius: 14px;
+        background: #000;
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
+      }
       .stage img {
         position: absolute;
         inset: 0;
@@ -44,10 +102,9 @@
         height: 100%;
         object-fit: cover;
         will-change: transform;
-        transform: translateY(0%); /* 위 이미지들은 여기서 0 → -100%로 이동 */
+        transform: translateY(0%);
       }
-
-      /* 첫 번째 이미지를 최상단, 그 다음은 그 아래… (DOM 순서 역순으로 z-index 부여) */
+      /* z-index로 위 → 아래 순서 고정 */
       .stage img:nth-child(1) {
         z-index: 4;
       }
@@ -65,17 +122,24 @@
   <body>
     <div class="spacer"><h2>위 컨텐츠</h2></div>
 
-    <!-- 핀되는 섹션(뷰포트 높이) -->
-    <section
-      class="pin-wrap"
-      style="height: 100vh; display: grid; place-items: center"
-    >
-      <div class="stage" id="stage">
-        <!-- 위에서부터(=최상단) 차례로 올라가며 사라지고, 아래가 드러남 -->
-        <img src="https://picsum.photos/id/1015/1600/900" alt="img1" />
-        <img src="https://picsum.photos/id/1025/1600/900" alt="img2" />
-        <img src="https://picsum.photos/id/1035/1600/900" alt="img3" />
-        <img src="https://picsum.photos/id/1043/1600/900" alt="img4" />
+    <!-- 고정되는 영역 -->
+    <section class="pin-wrap">
+      <div class="inner">
+        <!-- 타이틀 (같은 문구, 폰트만 다르게 4벌) -->
+        <div class="typo" id="typo">
+          <h2 class="title font-1 is-active">World First Climate Control</h2>
+          <h2 class="title font-2">World First Climate Control</h2>
+          <h2 class="title font-3">World First Climate Control</h2>
+          <h2 class="title font-4">World First Climate Control</h2>
+        </div>
+
+        <!-- 이미지 스택 -->
+        <div class="stage" id="stage">
+          <img src="https://picsum.photos/id/1015/1600/900" alt="img1" />
+          <img src="https://picsum.photos/id/1025/1600/900" alt="img2" />
+          <img src="https://picsum.photos/id/1035/1600/900" alt="img3" />
+          <img src="https://picsum.photos/id/1043/1600/900" alt="img4" />
+        </div>
       </div>
     </section>
 
@@ -85,43 +149,50 @@
       gsap.registerPlugin(ScrollTrigger);
 
       const stage = document.getElementById('stage');
-      const stack = gsap.utils.toArray('#stage img'); // [최상단, ..., 최하단]
-      const steps = stack.length - 1; // 전환 횟수
-      const distancePerStep = 1; // 타임라인 상 각 단계 길이(정규화)
+      const images = gsap.utils.toArray('#stage img'); // [최상단, ..., 최하단]
+      const titles = gsap.utils.toArray('#typo .title'); // 이미지 개수와 동일
+      const steps = images.length - 1; // 전환 횟수
+      const seg = 1; // 타임라인상의 구간 길이(정규화)
 
-      // 타임라인: pin 된 상태에서 스크롤에 따라 "윗 이미지"가 한 장씩 위로 빠짐
+      // 초기: 첫 타이틀만 보이게
+      gsap.set(titles.slice(1), { autoAlpha: 0, y: 10 });
+
+      // 단일 타임라인으로 이미지 교차 + 타이틀 폰트 페이드 동기화
       const tl = gsap.timeline({
         defaults: { ease: 'none' },
         scrollTrigger: {
           trigger: '.pin-wrap',
           start: 'top top',
-          end: '+=' + window.innerHeight * steps, // 이미지 n장이면 n-1 뷰포트 길이
+          end: '+=' + window.innerHeight * steps, // (n-1)뷰포트 길이만큼 진행
           scrub: true,
           pin: true,
           anticipatePin: 1,
           snap: {
-            // 단계(슬라이드) 경계로 스냅
-            snapTo: (value) => {
-              return Math.round(value * steps) / steps;
-            },
-            duration: 0.4,
+            // 각 전환 경계로 스냅
+            snapTo: (value) => Math.round(value * steps) / steps,
+            duration: 0.45,
             ease: 'power1.inOut',
           },
         },
       });
 
-      // 각 단계: i번째(위) 이미지를 0 → -100%로 밀어 올려 아래 이미지를 드러냄
-      stack.forEach((img, i) => {
-        if (i === stack.length - 1) return; // 마지막(맨 아래)은 안 움직임
-        tl.to(
-          img,
-          { yPercent: -100, duration: distancePerStep },
-          i * distancePerStep
+      images.forEach((img, i) => {
+        if (i === images.length - 1) return; // 마지막 이미지는 고정(아래 바닥)
+        const t = i * seg;
+
+        // 1) 현재(위) 이미지 위로 밀어 올려 다음 이미지 드러나게
+        tl.to(img, { yPercent: -100, duration: seg }, t);
+
+        // 2) 타이포 폰트 교대: 이전 타이틀 out → 다음 타이틀 in
+        tl.to(titles[i], { autoAlpha: 0, y: -10, duration: 0.35 }, t + 0.05).to(
+          titles[i + 1],
+          { autoAlpha: 1, y: 0, duration: 0.45 },
+          t + 0.2
         );
       });
 
       // 리사이즈 대응
-      window.addEventListener('resize', () => ScrollTrigger.refresh());
+      addEventListener('resize', () => ScrollTrigger.refresh());
     </script>
   </body>
 </html>
