@@ -729,7 +729,10 @@
 .tab-nav {
   width: 100%;
   margin: 0 auto;
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #fff;
 }
 .tab-nav:after {
   content: '';
