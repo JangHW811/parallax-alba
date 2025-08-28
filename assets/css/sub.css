@@ -1835,24 +1835,29 @@
   margin: 128px 0 0;
   position: relative;
 }
-.section-company {
-  padding: 128px 0 0;
-}
 .section-company.ip-delivers {
   margin-top: 24px;
+  margin-bottom: 0;
 }
 
 .section-subtitle {
   position: sticky;
-  top: 128px;
+  top: 0;
   left: 60px;
   font-size: 18px;
   font-weight: 500;
   line-height: 140%;
   color: #000;
-  background-color: #fff;
   z-index: 10;
-  padding: 16px 0;
+  margin-top: 32px;
+  div {
+    height: 72px;
+    margin-top: 0;
+    padding-bottom: 16px;
+    display: flex;
+    align-items: flex-end;
+    background-color: #fff;
+  }
 }
 .section-company .section-lead {
   font-size: 32px;
@@ -2144,11 +2149,7 @@
     font-size: 15px;
     margin-bottom: 36px;
   }
-  .section-company {
-    padding: 64px 0 0;
-  }
   .section-company .section-subtitle {
-    top: 64px;
     left: 24px;
     font-size: 15px;
     line-height: 145%;
@@ -2261,11 +2262,7 @@
     font-size: 14px;
     margin-bottom: 24px;
   }
-  .section-company {
-    padding: 36px 0 0;
-  }
   .section-company .section-subtitle {
-    top: 36px;
     left: 16px;
     font-size: 14px;
   }
