@@ -2138,7 +2138,7 @@
     padding: 0 24px;
     max-width: 100%;
     left: unset;
-    transform: translate(0, -50%);
+    width: 80%;
   }
   .main-text {
     font-size: 28px;
@@ -2254,6 +2254,7 @@
   }
   .main-text-wrapper {
     padding: 0 16px;
+    width: 90%;
   }
   .main-text {
     font-size: 22px;
