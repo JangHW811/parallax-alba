@@ -848,6 +848,10 @@
   border-bottom: 1px solid #000;
   padding: 24px 0 48px;
   gap: 48px;
+  &:first-child,
+  &:nth-child(2) {
+    border-top: 1px solid #000;
+  }
 }
 .card-text {
   gap: 16px;
@@ -963,7 +967,6 @@
   .cards-wrap {
     max-width: 100%;
     padding-top: 16px;
-    border-top: 1px solid #000;
     margin: 0;
   }
   .cards-grid {
@@ -1991,7 +1994,92 @@
 .milestones {
   height: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  .milestones-wrapper {
+    display: flex;
+    gap: 24px;
+    width: 65%;
+    align-self: flex-end;
+    .year-item {
+      margin-top: 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 36px;
+      background-color: #f7f7f7;
+      flex: 1;
+      .year {
+        font-size: 72px;
+        font-weight: 500;
+        line-height: 88%;
+        color: #000;
+      }
+      .title {
+        font-size: 32px;
+        font-weight: 500;
+        color: #000;
+        line-height: 145%;
+        align-self: flex-end;
+      }
+    }
+    .nation-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 86px;
+      .nation {
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 48px;
+        line-height: 58px;
+      }
+      .content {
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 15px;
+        line-height: 160%;
+      }
+    }
+  }
 }
+
+@media screen and (max-width: 1280px) {
+  .milestones {
+    .milestones-wrapper {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .milestones {
+    .milestones-wrapper {
+      gap: 12px;
+      .year-item {
+        padding: 20px;
+        gap: 12px;
+        .year {
+          font-size: 28px;
+        }
+        .title {
+          font-size: 12px;
+        }
+      }
+      .nation-item {
+        margin-top: 24px;
+        .nation {
+          font-size: 20px;
+        }
+        .content {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
 .milestones-inner {
   max-width: 80%;
   display: flex;
@@ -3195,4 +3283,12 @@
   .portfolio-panels .menu-links.type2 .content .category {
     margin-top: 24px;
   }
+}
+
+.event-detail-container {
+  max-width: 1192px;
+}
+
+.contact-main.support-contents {
+  margin-bottom: 0;
 }
